@@ -44,6 +44,10 @@
     [rowData]="rowData | async"
     [columnDefs]="columnDefs"
     rowSelection="multiple"
+    [groupSuppressAutoColumn]="true"
+    [groupHideOpenParents]="true"
+    [groupIncludeFooter]="true"
+      [groupIncludeTotalFooter]="true"
     >
 </ag-grid-angular>
 

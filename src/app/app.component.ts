@@ -28,13 +28,7 @@ export class AppComponent implements OnInit {
     //   hide: true
     // },
     // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
-    {
-      headerName: '',
-      field: 'CodPro',
-      width: 57,
-      hide: false,
-      pinned: 'left'
-    },
+    //
     {
       headerName: 'Programa',
       field: 'Programa',
@@ -42,13 +36,26 @@ export class AppComponent implements OnInit {
       width: 300,
       resizable: true,
       // hide: true,
-      pinned: 'left'
+      pinned: 'left',
+      showRowGroup: 'Programa',
+      cellRenderer: 'agGroupCellRenderer'
     },
+    // {
+    //     headerName: '',
+    //     field: 'CodPro',
+    //     width: 57,
+    //     hide: false,
+    //     pinned: 'left'
+    //   },
     {
       headerName: 'Capítulo',
       field: 'DesCap',
       rowGroup: true,
-      hide: true
+      resizable: true,
+      // hide: true,
+      pinned: 'left',
+      showRowGroup: 'DesCap',
+      cellRenderer: 'agGroupCellRenderer'
     },
     {
       headerName: '',
@@ -74,8 +81,9 @@ export class AppComponent implements OnInit {
           field: 'Créditos Iniciales',
           width: 140,
           cellStyle: valueCellStyle,
+          aggFunc: 'sum'
           // Problema con los decimales con coma en el json.
-          cellRenderer: CurrencyCellRenderer
+          // cellRenderer: CurrencyCellRenderer
         },
         {
           headerName: 'Iniciales',
@@ -87,7 +95,7 @@ export class AppComponent implements OnInit {
           headerName: 'Modificaciones',
           field: 'Modificaciones de Crédito',
           cellStyle: valueCellStyle,
-          cellRenderer: CurrencyCellRenderer,
+          // cellRenderer: CurrencyCellRenderer,
           // type: 'numericColumn',
           width: 140
         },
@@ -95,7 +103,7 @@ export class AppComponent implements OnInit {
           headerName: 'Totales',
           field: 'Créditos Totales consignados',
           width: 140,
-          cellRenderer: CurrencyCellRenderer
+          // cellRenderer: CurrencyCellRenderer
         },
       ]
     },
