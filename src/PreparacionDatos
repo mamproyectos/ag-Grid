@@ -1,0 +1,24 @@
+Preparar consulta en Tableau para unir el Excel del Ayuntamiento con las tablas.
+Estando en la pestaña Fuente de datos:
+     En el menu principal:
+        Datos.
+        Exportar datos a CSV...
+
+Tambien exporta los campos calculados.
+Al exportar de Tableau a CSV hay cantidades quelo hace con decimales y otras no.
+En el CSV generado revisar todas las columnas.
+    Las pongo como numero, decimales=0, sin separador de miles.
+
+Borrar los campos repetidos, org, eco.... y se dejan los enlazados de las tablas.
+
+https://www.csvjson.com/csv2json
+Lo genera con el nombre csvjson.json
+Le cambio el nombre.
+Lo hago público en Digital Ocean.
+Copia la URL.
+La pongo en el codigo.
+
+
+
+
+

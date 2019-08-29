@@ -9,16 +9,11 @@ const valueCellStyle = {
 const cellStyleRight = {
   'text-align': 'right'
 };
-
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
-
 
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
@@ -34,17 +29,24 @@ export class AppComponent implements OnInit {
     // },
     // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
     {
+      headerName: '',
+      field: 'CodPro',
+      width: 57,
+      hide: false,
+      pinned: 'left'
+    },
+    {
       headerName: 'Programa',
       field: 'Programa',
       rowGroup: true,
       width: 300,
       resizable: true,
-      hide: true,
+      // hide: true,
       pinned: 'left'
     },
     {
-      headerName: 'Capítulo (Capitulos)',
-      field: 'Capítulo (Capitulos)',
+      headerName: 'Capítulo',
+      field: 'DesCap',
       rowGroup: true,
       hide: true
     },
@@ -62,9 +64,8 @@ export class AppComponent implements OnInit {
       width: 300,
       resizable: true,
       pinned: 'left'
-
     },
-    
+
     {
       headerName: 'Creditos',
       children: [
@@ -86,6 +87,7 @@ export class AppComponent implements OnInit {
           headerName: 'Modificaciones',
           field: 'Modificaciones de Crédito',
           cellStyle: valueCellStyle,
+          cellRenderer: CurrencyCellRenderer,
           // type: 'numericColumn',
           width: 140
         },
@@ -93,7 +95,7 @@ export class AppComponent implements OnInit {
           headerName: 'Totales',
           field: 'Créditos Totales consignados',
           width: 140,
-          cellStyle: valueCellStyle
+          cellRenderer: CurrencyCellRenderer
         },
       ]
     },
@@ -230,26 +232,25 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/convertcsv.json');
+    // tslint:disable-next-line:max-line-length
+    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
     // console.log(this.rowData);
   }
 
-  getSelectedRows() {
-    const selectedNodes = this.agGrid.api.getSelectedNodes();
-    const selectedData = selectedNodes.map(node => node.data);
-    const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ');
-    alert(`Selected nodes: ${selectedDataStringPresentation}`);
-  }
+  // getSelectedRows() {
+  //   const selectedNodes = this.agGrid.api.getSelectedNodes();
+  //   const selectedData = selectedNodes.map(node => node.data);
+  //   const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ');
+  //   alert(`Selected nodes: ${selectedDataStringPresentation}`);
+  // }
 }
 
 function CurrencyCellRenderer(params: any) {
   const inrFormat = new Intl.NumberFormat('es-ES', {
-    style: 'decimal',
+    // style: 'decimal',
     // currency: 'USD',
-    minimumFractionDigits: 0
+    // minimumFractionDigits: 0
   });
-  // Problema con los decimales con coma en el json.
   console.log(params.value);
   return inrFormat.format(params.value);
-
 }
