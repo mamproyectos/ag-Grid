@@ -47,7 +47,10 @@
     [groupSuppressAutoColumn]="true"
     [groupHideOpenParents]="true"
     [groupIncludeFooter]="true"
-      [groupIncludeTotalFooter]="true"
+    [groupIncludeTotalFooter]="true"
+    [groupHeaderHeight]="groupHeaderHeight"
+    [headerHeight]="headerHeight"
+    (gridReady)="onGridReady($event)"
     >
 </ag-grid-angular>
 

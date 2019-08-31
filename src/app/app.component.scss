@@ -1,3 +1,58 @@
 .resaltado{
   background-color: aqua
 }
+
+.ag-cell-label-container{
+  /*Necessary to allow for text to grow vertically*/
+  height: 100%;
+}
+
+.ag-header-cell-label {
+  /*Necessary to allow for text to grow vertically*/
+  height: 100%;
+  padding:0 !important;
+}
+
+.ag-header-cell-label .ag-header-cell-text{
+  /*Force the width corresponding at how much width
+  we need once the text is layed out vertically*/
+  width: 30px;
+  transform: rotate(90deg);
+  margin-top: 50px;
+  /*Since we are rotating a span*/
+  display: inline-block;
+}
+.ag-pivot-off .ag-header-cell-label{
+  color:#8a6d3b;
+}
+
+.ag-pivot-on .ag-header-cell-label{
+  color:#1b6d85;
+  font-weight: bold;
+}
+
+.ag-pivot-off .ag-header-group-cell{
+  font-size: 50px;
+  color: red;
+}
+
+.ag-pivot-on .ag-header-group-cell{
+  font-size: 25px;
+  color: green;
+}
+.ag-floating-filter-body input {
+  height:49px;
+}
+
+.ag-floating-filter-button {
+  margin-top: -49px;
+}
+
+.ag-floating-filter-button button {
+  height:49px
+}
+
+.ag-floating-filter-body input {
+  font-size: 15px;
+  font-weight: bold;
+}

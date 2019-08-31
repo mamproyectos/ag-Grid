@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 
-const valueCellStyle = {
-  'text-align': 'right'
-};
+// const valueCellStyle = {
+//   'text-align': 'right'
+// };
 
-const cellStyleRight = {
-  'text-align': 'right'
-};
+// const cellStyleRight = {
+//   'text-align': 'right'
+// };
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +18,15 @@ const cellStyleRight = {
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   title = 'app';
+
+  private gridApi;
+  private gridColumnApi;
+  // private groupHeaderHeight: number;
+  // private headerHeight: number;
+  // private floatingFiltersHeight;
+  // private pivotGroupHeaderHeight;
+  // private pivotHeaderHeight;
+  // private defaultColDef;
 
   columnDefs = [
     // {
@@ -61,7 +70,7 @@ export class AppComponent implements OnInit {
       headerName: '',
       field: 'CodEco',
       width: 57,
-      cellStyle: cellStyleRight,
+      // cellStyle: cellStyleRight,
       pinned: 'left'
     },
     {
@@ -80,8 +89,9 @@ export class AppComponent implements OnInit {
           headerName: 'Iniciales',
           field: 'Créditos Iniciales',
           width: 140,
-          cellStyle: valueCellStyle,
-          aggFunc: 'sum'
+          // cellStyle: valueCellStyle,
+          aggFunc: 'sum',
+          suppressSizeToFit: true,
           // Problema con los decimales con coma en el json.
           // cellRenderer: CurrencyCellRenderer
         },
@@ -89,12 +99,12 @@ export class AppComponent implements OnInit {
           headerName: 'Iniciales',
           field: 'Créditos Iniciales',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Modificaciones',
           field: 'Modificaciones de Crédito',
-          cellStyle: valueCellStyle,
+          // cellStyle: valueCellStyle,
           // cellRenderer: CurrencyCellRenderer,
           // type: 'numericColumn',
           width: 140
@@ -115,43 +125,43 @@ export class AppComponent implements OnInit {
           headerName: 'Obliga. reconocidas',
           field: 'Saldo de Obligaciones Reconocidas',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Comprometidos',
           field: 'Saldo de Gastos Compromet.',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Autorizados',
           field: 'Saldo de Gastos Autorizados',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Facturas consumen disp. Pend. Contabilizar',
           field: 'Facturas consumen disp. Pend. Contabilizar',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Fase definitiva',
           field: 'Gastado en Fase Definitiva',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Pendiente Aplicar a Presupuesto',
           field: 'Gasto Pendiente Aplicar a Presupuesto',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Total gastado',
           field: 'Total gastado',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
       ]
     },
@@ -163,13 +173,13 @@ export class AppComponent implements OnInit {
           headerName: 'Ordenados',
           field: 'Saldo de Pagos Ordenados',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Realizados',
           field: 'Pagos Realizados',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
       ]
     },
@@ -181,37 +191,37 @@ export class AppComponent implements OnInit {
           headerName: 'Disponibles',
           field: 'Saldo de Créditos disponibles',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Acuerdo no disponibilidad',
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Retenidos transferencias',
           field: 'Saldo de Créditos Retenidos para Trans.',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Retenidos pdtes de utilización',
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Disponible real',
           field: 'Saldo de Crédito Disponible Real',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
         {
           headerName: 'Disponibles vinculación',
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
           width: 140,
-          cellStyle: valueCellStyle
+          // cellStyle: valueCellStyle
         },
       ]
     }
@@ -227,22 +237,28 @@ export class AppComponent implements OnInit {
     // columnDefs: columnDefs,
     rowData: null,
     // floatingFilter:true,
-    groupHeaderHeight: 75,
-    headerHeight: 150,
-    floatingFiltersHeight: 50,
-    pivotGroupHeaderHeight: 50,
-    pivotHeaderHeight: 100,
-    showToolPanel: true
-  };
+   };
 
-  rowData: any;
+rowData: any;
+groupHeaderHeight = 25;
+headerHeight = 100;
 
-  constructor(private http: HttpClient) { }
 
-  ngOnInit() {
+onGridReady(params) {
+  this.gridApi = params.api;
+  this.gridColumnApi = params.columnApi;
+  // tslint:disable-next-line:max-line-length
+  this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
+
+}
+
+constructor(private http: HttpClient) { }
+
+ngOnInit() {
     // tslint:disable-next-line:max-line-length
-    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
+    // this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
     // console.log(this.rowData);
+
   }
 
   // getSelectedRows() {
