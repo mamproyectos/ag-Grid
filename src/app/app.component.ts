@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 
-// const valueCellStyle = {
-//   'text-align': 'right'
-// };
+const valueCellStyle = {
+  'text-align': 'right'
+};
 
 // const cellStyleRight = {
 //   'text-align': 'right'
@@ -42,12 +42,13 @@ export class AppComponent implements OnInit {
       headerName: 'Programa',
       field: 'Programa',
       rowGroup: true,
-      width: 300,
+      width: 500,
       resizable: true,
       // hide: true,
       pinned: 'left',
       showRowGroup: 'Programa',
-      cellRenderer: 'agGroupCellRenderer'
+      cellRenderer: 'agGroupCellRenderer',
+      filter: 'agTextColumnFilter'
     },
     // {
     //     headerName: '',
@@ -57,8 +58,16 @@ export class AppComponent implements OnInit {
     //     pinned: 'left'
     //   },
     {
+      headerName: '',
+      field: 'Capítulo',
+      width: 10,
+      // cellStyle: cellStyleRight,
+      pinned: 'left'
+    },
+    {
       headerName: 'Capítulo',
       field: 'DesCap',
+      width: 300,
       rowGroup: true,
       resizable: true,
       // hide: true,
@@ -77,7 +86,7 @@ export class AppComponent implements OnInit {
       headerName: 'Económico',
       field: 'DesEco',
       cellClass: 'resaltado',
-      width: 300,
+      width: 500,
       resizable: true,
       pinned: 'left'
     },
@@ -88,17 +97,18 @@ export class AppComponent implements OnInit {
         {
           headerName: 'Iniciales',
           field: 'Créditos Iniciales',
-          width: 140,
+          width: 100,
           // cellStyle: valueCellStyle,
           aggFunc: 'sum',
           suppressSizeToFit: true,
-          // Problema con los decimales con coma en el json.
-          // cellRenderer: CurrencyCellRenderer
+            cellRenderer: CurrencyCellRenderer,
+            cellStyle: valueCellStyle
         },
         {
           headerName: 'Iniciales',
           field: 'Créditos Iniciales',
-          width: 140,
+          width: 100,
+          type: 'numericColumn'
           // cellStyle: valueCellStyle
         },
         {
@@ -228,27 +238,36 @@ export class AppComponent implements OnInit {
 
   ];
 
-  // No funciona.
+  // No funciona. ................................
   gridOptions = {
     defaultColDef: {
       sortable: true,
       resizable: true
     },
     // columnDefs: columnDefs,
-    rowData: null,
+    // rowData: null,
     // floatingFilter:true,
    };
 
+   defaultColDef = {
+    width: 150,
+    editable: true,
+    filter: 'agTextColumnFilter'
+  };
+// Final No funciona. ................................
+
+
 rowData: any;
 groupHeaderHeight = 25;
-headerHeight = 100;
+headerHeight = 25;
+
 
 
 onGridReady(params) {
   this.gridApi = params.api;
   this.gridColumnApi = params.columnApi;
   // tslint:disable-next-line:max-line-length
-  this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
+  this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
 
 }
 
@@ -271,10 +290,10 @@ ngOnInit() {
 
 function CurrencyCellRenderer(params: any) {
   const inrFormat = new Intl.NumberFormat('es-ES', {
-    // style: 'decimal',
-    // currency: 'USD',
-    // minimumFractionDigits: 0
+    style: 'decimal',
+    currency: 'EUR',
+    minimumFractionDigits: 0
   });
-  console.log(params.value);
+  console.log(inrFormat.format(params.value));
   return inrFormat.format(params.value);
 }
