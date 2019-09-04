@@ -1,11 +1,28 @@
+Renombrar Excel publicado terminando en OCM.
+Eliminar fila de cabecera.
+Eliminar fila totales.
+Añadir columna "Capítulo".
+Extraer primer caracter de "Economico".
+Cambiar a tipo numero.
+Grabar.
+
+Abrir Tableau
+Crear nuevo libro con el Excel renombrado anteriormente.
+Grabarlo con el mismo nombre.
+
+
 Preparar consulta en Tableau para unir el Excel del Ayuntamiento con las tablas.
+   Capitulos.
+   Programas.
+   Economicos.
+
 Estando en la pestaña Fuente de datos:
      En el menu principal:
         Datos.
         Exportar datos a CSV...
 
 Tambien exporta los campos calculados.
-Al exportar de Tableau a CSV hay cantidades quelo hace con decimales y otras no.
+Al exportar de Tableau a CSV hay cantidades que lo hace con decimales y otras no.
 En el CSV generado revisar todas las columnas.
     Las pongo como numero, decimales=0, sin separador de miles.
 

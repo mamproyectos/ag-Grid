@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
       pinned: 'left',
       showRowGroup: 'Programa',
       cellRenderer: 'agGroupCellRenderer',
-      filter: 'agTextColumnFilter'
+      filter: 'agTextColumnFilter',
+      filterValueGetter: params => params.data.Programa
     },
     // {
     //     headerName: '',
@@ -288,12 +289,20 @@ ngOnInit() {
   // }
 }
 
+// function CurrencyCellRenderer(params: any) {
+//   const inrFormat = new Intl.NumberFormat('es-ES', {
+//     style: 'decimal',
+//     currency: 'EUR',
+//     minimumFractionDigits: 0
+//   });
+//   console.log(inrFormat.format(params.value));
+//   return inrFormat.format(params.value);
+// }
+
 function CurrencyCellRenderer(params: any) {
-  const inrFormat = new Intl.NumberFormat('es-ES', {
-    style: 'decimal',
-    currency: 'EUR',
-    minimumFractionDigits: 0
-  });
-  console.log(inrFormat.format(params.value));
-  return inrFormat.format(params.value);
+  if (params.value) {
+    return params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  } else {
+    return null;
+  }
 }
