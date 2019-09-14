@@ -5,10 +5,6 @@ import { AgGridAngular } from 'ag-grid-angular';
 const valueCellStyle = {
   'text-align': 'right'
 };
-
-const cellStyleRight = {
-  'text-align': 'right'
-};
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -41,6 +37,7 @@ export class AppComponent implements OnInit {
     {
       headerName: 'Programa',
       width: 500,
+      pinned: 'left',
       showRowGroup: 'Programa',
       cellRenderer: 'agGroupCellRenderer',
       filter: 'agTextColumnFilter',
@@ -56,7 +53,8 @@ export class AppComponent implements OnInit {
       field: 'Programa',
       rowGroup: true,
       hide: true,
-           // pinned: 'left',
+      pinned: 'left',
+      resizable: true,
       // showRowGroup: 'Programa',
       // cellRenderer: 'agGroupCellRenderer',
       // filter: 'agTextColumnFilter',
@@ -74,11 +72,13 @@ export class AppComponent implements OnInit {
       field: 'Capítulo',
       width: 10,
       hide: true,
+      pinned: 'left',
+      resizable: true,
+
       // cellStyle: cellStyleRight,
       // rowGroup: true,
       // cellRenderer: 'agGroupCellRenderer',
       // showRowGroup: 'Programa',
-      // pinned: 'left'
 
     },
     {
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
       rowGroup: true,
       resizable: true,
       // hide: true,
-      // pinned: 'left',
+      pinned: 'left',
       showRowGroup: 'DesCap',
       cellRenderer: 'agGroupCellRenderer',
       valueGetter: params => {
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit {
       field: 'CodEco',
       width: 57,
       // cellStyle: cellStyleRight,
-      // pinned: 'left'
+      pinned: 'left',
       comparator: function (valueA, valueB, nodeA, nodeB, isInverted) {
         return valueA - valueB;
       }
@@ -130,7 +130,7 @@ export class AppComponent implements OnInit {
       cellClass: 'resaltado',
       width: 400,
       resizable: true,
-      // pinned: 'left'
+      pinned: 'left'
     },
 
     {
@@ -143,41 +143,39 @@ export class AppComponent implements OnInit {
           resizable: true,
           cellStyle: valueCellStyle,
           aggFunc: 'sum',
-           // suppressSizeToFit: true,
+          // suppressSizeToFit: true,
           // cellRenderer: 'agGroupCellRenderer',
           // cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
-           valueFormatter: CurrencyCellRenderer,
-           // cellRendererParams: {
-           //   suppressCount: true, // turn off the row count
-           //   suppressDoubleClickExpand: true, // turn off double click for expand
-           //   innerRenderer: params => params.value, // provide an inner renderer
-           //   footerValueGetter: function (params) {
-           //     console.log('test loolo00000 params', params);
-           //     return '<span style="color: red; font-size: 14px; padding-right: 5px;">' + params.value + '</span>';
-           //   }
-           // }
-        },
-        {
-          headerName: 'Iniciales',
-          field: 'Créditos Iniciales',
-          width: 100,
-          type: 'numericColumn'
-          // cellStyle: valueCellStyle
+          valueFormatter: CurrencyCellRenderer,
+          // cellRendererParams: {
+          //   suppressCount: true, // turn off the row count
+          //   suppressDoubleClickExpand: true, // turn off double click for expand
+          //   innerRenderer: params => params.value, // provide an inner renderer
+          //   footerValueGetter: function (params) {
+          //     console.log('test loolo00000 params', params);
+          //     return '<span style="color: red; font-size: 14px; padding-right: 5px;">' + params.value + '</span>';
+          //   }
+          // }
         },
         {
           headerName: 'Modificaciones',
           field: 'Modificaciones de Crédito',
-          // cellStyle: valueCellStyle,
-          // cellRenderer: CurrencyCellRenderer,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
           // type: 'numericColumn',
           width: 140
         },
         {
           headerName: 'Totales',
           field: 'Créditos Totales consignados',
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
           width: 140,
-          // cellRenderer: CurrencyCellRenderer
         },
       ]
     },
@@ -301,36 +299,36 @@ export class AppComponent implements OnInit {
     // columnDefs: columnDefs,
     // rowData: null,
     // floatingFilter:true,
-   };
+  };
 
-   defaultColDef = {
+  defaultColDef = {
     width: 150,
     editable: true,
     filter: 'agTextColumnFilter'
   };
- // Final No funciona. ................................
+  // Final No funciona. ................................
 
-rowData: any;
-groupHeaderHeight = 25;
-headerHeight = 25;
+  rowData: any;
+  groupHeaderHeight = 25;
+  headerHeight = 25;
 
-onGridReady(params) {
-  this.gridApi = params.api;
-  this.gridColumnApi = params.columnApi;
-  // tslint:disable-next-line:max-line-length
-  this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
-  var defaultSortModel = [
-    {
-      colId: 'CodEco',
-      sort: 'asc'
-    }
-  ];
-  params.api.setSortModel(defaultSortModel);
-}
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    // tslint:disable-next-line:max-line-length
+    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
+    var defaultSortModel = [
+      {
+        colId: 'CodEco',
+        sort: 'asc'
+      }
+    ];
+    params.api.setSortModel(defaultSortModel);
+  }
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-ngOnInit() {
+  ngOnInit() {
     // tslint:disable-next-line:max-line-length
     // this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
     // console.log(this.rowData);
