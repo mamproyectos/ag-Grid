@@ -384,6 +384,7 @@ export class AppComponent implements OnInit {
   };
   // Final No funciona. ................................
 
+
   constructor(private http: HttpClient) {
     this.sideBar = 'filters';
   }
