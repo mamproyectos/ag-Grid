@@ -14,6 +14,7 @@ const valueCellStyle = {
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   title = 'app';
+  public sideBar;
 
   private gridApi;
   private gridColumnApi;
@@ -38,9 +39,11 @@ export class AppComponent implements OnInit {
       headerName: 'Programa',
       width: 500,
       pinned: 'left',
+      resizable: true,
       showRowGroup: 'Programa',
       cellRenderer: 'agGroupCellRenderer',
-      filter: 'agTextColumnFilter',
+      // filter: 'agTextColumnFilter',
+      filter: false,
       filterValueGetter: params => params.data.Programa,
       cellRendererParams: {
         suppressCount: true,
@@ -55,6 +58,7 @@ export class AppComponent implements OnInit {
       hide: true,
       pinned: 'left',
       resizable: true,
+      filter: true,
       // showRowGroup: 'Programa',
       // cellRenderer: 'agGroupCellRenderer',
       // filter: 'agTextColumnFilter',
@@ -74,6 +78,7 @@ export class AppComponent implements OnInit {
       hide: true,
       pinned: 'left',
       resizable: true,
+      filter: false,
 
       // cellStyle: cellStyleRight,
       // rowGroup: true,
@@ -87,6 +92,7 @@ export class AppComponent implements OnInit {
       width: 300,
       rowGroup: true,
       resizable: true,
+      filter: false,
       // hide: true,
       pinned: 'left',
       showRowGroup: 'DesCap',
@@ -120,6 +126,7 @@ export class AppComponent implements OnInit {
       width: 57,
       // cellStyle: cellStyleRight,
       pinned: 'left',
+      filter: false,
       comparator: function (valueA, valueB, nodeA, nodeB, isInverted) {
         return valueA - valueB;
       }
@@ -130,7 +137,8 @@ export class AppComponent implements OnInit {
       cellClass: 'resaltado',
       width: 400,
       resizable: true,
-      pinned: 'left'
+      pinned: 'left',
+      filter: false,
     },
 
     {
@@ -141,6 +149,7 @@ export class AppComponent implements OnInit {
           field: 'Créditos Iniciales',
           width: 100,
           resizable: true,
+          filter: false,
           cellStyle: valueCellStyle,
           aggFunc: 'sum',
           // suppressSizeToFit: true,
@@ -166,7 +175,8 @@ export class AppComponent implements OnInit {
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
           // type: 'numericColumn',
-          width: 140
+          width: 140,
+          filter: false,
         },
         {
           headerName: 'Totales',
@@ -176,6 +186,7 @@ export class AppComponent implements OnInit {
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
           width: 140,
+          filter: false,
         },
       ]
     },
@@ -187,43 +198,71 @@ export class AppComponent implements OnInit {
           headerName: 'Obliga. reconocidas',
           field: 'Saldo de Obligaciones Reconocidas',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Comprometidos',
           field: 'Saldo de Gastos Compromet.',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Autorizados',
           field: 'Saldo de Gastos Autorizados',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Facturas consumen disp. Pend. Contabilizar',
           field: 'Facturas consumen disp. Pend. Contabilizar',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Fase definitiva',
           field: 'Gastado en Fase Definitiva',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Pendiente Aplicar a Presupuesto',
           field: 'Gasto Pendiente Aplicar a Presupuesto',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Total gastado',
           field: 'Total gastado',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
       ]
     },
@@ -235,13 +274,21 @@ export class AppComponent implements OnInit {
           headerName: 'Ordenados',
           field: 'Saldo de Pagos Ordenados',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Realizados',
           field: 'Pagos Realizados',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
       ]
     },
@@ -253,37 +300,61 @@ export class AppComponent implements OnInit {
           headerName: 'Disponibles',
           field: 'Saldo de Créditos disponibles',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Acuerdo no disponibilidad',
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Retenidos transferencias',
           field: 'Saldo de Créditos Retenidos para Trans.',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Retenidos pdtes de utilización',
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Disponible real',
           field: 'Saldo de Crédito Disponible Real',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
         {
           headerName: 'Disponibles vinculación',
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
           width: 140,
-          // cellStyle: valueCellStyle
+          filter: false,
+          aggFunc: 'sum',
+          cellStyle: valueCellStyle,
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
       ]
     }
@@ -304,7 +375,8 @@ export class AppComponent implements OnInit {
   defaultColDef = {
     width: 150,
     editable: true,
-    filter: 'agTextColumnFilter'
+    // filter: 'agTextColumnFilter',
+    filter: false,
   };
   // Final No funciona. ................................
 
@@ -326,7 +398,9 @@ export class AppComponent implements OnInit {
     params.api.setSortModel(defaultSortModel);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.sideBar = 'filters';
+     }
 
   ngOnInit() {
     // tslint:disable-next-line:max-line-length
