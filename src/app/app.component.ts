@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   public sideBar;
   rowData: any;
   groupHeaderHeight = 25;
-  public autoGroupColumnDef;
   headerHeight = 25;
 
   private gridApi;
@@ -359,6 +358,16 @@ export class AppComponent implements OnInit {
     }
 
   ];
+
+  //  TODO: NO parece hacer nada.
+  autoGroupColumnDef = {
+    headerName: 'Programa',
+    field: 'Programa',
+    cellRenderer: 'agGroupCellRenderer',
+    cellRendererParams: {
+        checkbox: true
+    }
+};
 
   // No funciona. ................................
   gridOptions = {
