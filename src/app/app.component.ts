@@ -15,15 +15,13 @@ export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   title = 'app';
   public sideBar;
+  rowData: any;
+  groupHeaderHeight = 25;
+  public autoGroupColumnDef;
+  headerHeight = 25;
 
   private gridApi;
   private gridColumnApi;
-  // private groupHeaderHeight: number;
-  // private headerHeight: number;
-  // private floatingFiltersHeight;
-  // private pivotGroupHeaderHeight;
-  // private pivotHeaderHeight;
-  // private defaultColDef;
 
   columnDefs = [
     // {
@@ -79,6 +77,7 @@ export class AppComponent implements OnInit {
       pinned: 'left',
       resizable: true,
       filter: false,
+      sortable: true,
 
       // cellStyle: cellStyleRight,
       // rowGroup: true,
@@ -367,29 +366,26 @@ export class AppComponent implements OnInit {
       sortable: true,
       resizable: true
     },
-    // columnDefs: columnDefs,
-    // rowData: null,
-    // floatingFilter:true,
-  };
+     };
 
   defaultColDef = {
     width: 150,
     editable: true,
-    // filter: 'agTextColumnFilter',
     filter: false,
   };
   // Final No funciona. ................................
 
-  rowData: any;
-  groupHeaderHeight = 25;
-  headerHeight = 25;
+  constructor(private http: HttpClient) {
+    this.sideBar = 'filters';
+  }
+
+  ngOnInit() {}
 
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    // tslint:disable-next-line:max-line-length
     this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
-    var defaultSortModel = [
+    const defaultSortModel = [
       {
         colId: 'CodEco',
         sort: 'asc'
@@ -397,34 +393,7 @@ export class AppComponent implements OnInit {
     ];
     params.api.setSortModel(defaultSortModel);
   }
-
-  constructor(private http: HttpClient) {
-    this.sideBar = 'filters';
-     }
-
-  ngOnInit() {
-    // tslint:disable-next-line:max-line-length
-    // this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/CONSULTA%20EJECUCI%C3%92N%20GASTO+%20(Varias%20conexiones).json');
-    // console.log(this.rowData);
-  }
-
-  // getSelectedRows() {
-  //   const selectedNodes = this.agGrid.api.getSelectedNodes();
-  //   const selectedData = selectedNodes.map(node => node.data);
-  //   const selectedDataStringPresentation = selectedData.map(node => node.make + ' ' + node.model).join(', ');
-  //   alert(`Selected nodes: ${selectedDataStringPresentation}`);
-  // }
 }
-
-// function CurrencyCellRenderer(params: any) {
-//   const inrFormat = new Intl.NumberFormat('es-ES', {
-//     style: 'decimal',
-//     currency: 'EUR',
-//     minimumFractionDigits: 0
-//   });
-//   console.log(inrFormat.format(params.value));
-//   return inrFormat.format(params.value);
-// }
 
 function CurrencyCellRenderer(params: any) {
   if (params.value) {
@@ -440,5 +409,14 @@ function redCellRenderer(params: any) {
   } else {
     return params.valueFormatted;
   }
-
 }
+
+// function CurrencyCellRenderer(params: any) {
+//   const inrFormat = new Intl.NumberFormat('es-ES', {
+//     style: 'decimal',
+//     currency: 'EUR',
+//     minimumFractionDigits: 0
+//   });
+//   console.log(inrFormat.format(params.value));
+//   return inrFormat.format(params.value);
+// }
