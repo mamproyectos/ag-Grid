@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
+import { GridOptions } from 'ag-grid-community/main';
+import { HeaderComponent } from './header-component/header.component';
 
 const valueCellStyle = {
   'text-align': 'right'
@@ -14,6 +16,9 @@ const valueCellStyle = {
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   title = 'app';
+
+  private gridOptions: GridOptions;
+
   public sideBar;
   rowData: any;
   groupHeaderHeight = 25;
@@ -370,24 +375,32 @@ export class AppComponent implements OnInit {
 };
 
   // No funciona. ................................
-  gridOptions = {
-    defaultColDef: {
-      sortable: true,
-      resizable: true
-    },
-     };
+  // gridOptions = {
+  //   defaultColDef: {
+  //     sortable: true,
+  //     resizable: true
+  //   },
+  //    };
 
-  defaultColDef = {
-    width: 150,
-    editable: true,
-    filter: false,
-  };
+  // defaultColDef = {
+  //   width: 150,
+  //   editable: true,
+  //   filter: false,
+  // };
   // Final No funciona. ................................
 
 
   constructor(private http: HttpClient) {
     this.sideBar = 'filters';
+     // we pass an empty gridOptions in, so we can grab the api out
+    this.gridOptions = {} as GridOptions;
+    this.gridOptions.defaultColDef = {
+        headerComponentFramework : HeaderComponent as new() => HeaderComponent,
+        headerComponentParams : {
+            menuIcon: 'fa-bars'
+        }
   }
+}
 
   ngOnInit() {}
 
