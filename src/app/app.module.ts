@@ -8,21 +8,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { TotalCellRendererComponent } from './totalCellRenderer.component';
 
-import {HeaderComponent} from './header-component/header.component';
+import { HeaderComponent } from './header-component/header.component';
+import { HeaderGroupComponent } from './header-group-component/header-group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     TotalCellRendererComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeaderGroupComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AgGridModule.withComponents([
       TotalCellRendererComponent,
-      HeaderComponent
+      HeaderComponent,
+      HeaderGroupComponent
     ])
   ],
   providers: [],

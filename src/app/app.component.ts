@@ -4,6 +4,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 
 import { GridOptions } from 'ag-grid-community/main';
 import { HeaderComponent } from './header-component/header.component';
+import { HeaderGroupComponent } from './header-group-component/header-group.component';
 
 const valueCellStyle = {
   'text-align': 'right'
@@ -37,116 +38,104 @@ export class AppComponent implements OnInit {
     //   hide: true
     // },
     // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
-    //
-    {
-      headerName: 'Programa',
-      width: 500,
-      pinned: 'left',
-      resizable: true,
-      showRowGroup: 'Programa',
-      cellRenderer: 'agGroupCellRenderer',
-      // filter: 'agTextColumnFilter',
-      filter: false,
-      filterValueGetter: params => params.data.Programa,
-      cellRendererParams: {
-        suppressCount: true,
-        footerValueGetter(params) {
-          return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + params.value + '</span>';
-        }
-      }
-    },
-    {
-      field: 'Programa',
-      rowGroup: true,
-      hide: true,
-      pinned: 'left',
-      resizable: true,
-      filter: true,
-      // showRowGroup: 'Programa',
-      // cellRenderer: 'agGroupCellRenderer',
-      // filter: 'agTextColumnFilter',
-      // filterValueGetter: params => params.data.Programa
-    },
-    // {
-    //     headerName: '',
-    //     field: 'CodPro',
-    //     width: 57,
-    //     hide: false,
-    //     pinned: 'left'
-    //   },
-    {
-      headerName: '',
-      field: 'Capítulo',
-      width: 10,
-      hide: true,
-      pinned: 'left',
-      resizable: true,
-      filter: false,
-      sortable: true,
 
-      // cellStyle: cellStyleRight,
-      // rowGroup: true,
-      // cellRenderer: 'agGroupCellRenderer',
-      // showRowGroup: 'Programa',
-
-    },
     {
-      headerName: 'Capítulo',
-      field: 'DesCap',
-      width: 300,
-      rowGroup: true,
-      resizable: true,
-      filter: false,
-      // hide: true,
-      pinned: 'left',
-      showRowGroup: 'DesCap',
-      cellRenderer: 'agGroupCellRenderer',
-      valueGetter: params => {
-        if (params.data) {
-          return params.data.Capítulo + ' - ' + params.data.DesCap;
-        } else {
-          return null;
-        }
-      },
-      cellRendererParams: {
-        suppressCount: true,
-        innerRenderer: params => {
-          console.log('params', params);
-          if (params.node.group) {
-            return params.value;
-          } else {
-            return '';
+      headerName: 'Programa-Capítulo-Económico.',
+      headerGroupComponentFramework: HeaderGroupComponent,
+      children: [
+        {
+          headerName: 'Programa',
+          width: 500,
+          pinned: 'left',
+          resizable: true,
+          showRowGroup: 'Programa',
+          cellRenderer: 'agGroupCellRenderer',
+          filter: false,
+          filterValueGetter: params => params.data.Programa,
+          cellRendererParams: {
+            suppressCount: true,
+            footerValueGetter(params) {
+              return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + params.value + '</span>';
+            }
           }
         },
-        footerValueGetter(params) {
-          const val = params.value.split(' - ')[1];
-          return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + val + '</span>';
-        }
-      }
-    },
-    {
-      headerName: '',
-      field: 'CodEco',
-      width: 57,
-      // cellStyle: cellStyleRight,
-      pinned: 'left',
-      filter: false,
-      // comparator(valueA, valueB, nodeA, nodeB, isInverted) {
-      //   return valueA - valueB;
-      // }
-    },
-    {
-      headerName: 'Económico',
-      field: 'DesEco',
-      cellClass: 'resaltado',
-      width: 400,
-      resizable: true,
-      pinned: 'left',
-      filter: false,
+        {
+          field: 'Programa',
+          rowGroup: true,
+          hide: true,
+          pinned: 'left',
+          resizable: true,
+          filter: true,
+        },
+        {
+          headerName: '',
+          field: 'Capítulo',
+          width: 10,
+          hide: true,
+          pinned: 'left',
+          resizable: true,
+          filter: false,
+          sortable: true,
+        },
+        {
+          headerName: 'Capítulo',
+          field: 'DesCap',
+          width: 300,
+          rowGroup: true,
+          resizable: true,
+          filter: false,
+          // hide: true,
+          pinned: 'left',
+          showRowGroup: 'DesCap',
+          cellRenderer: 'agGroupCellRenderer',
+          valueGetter: params => {
+            if (params.data) {
+              return params.data.Capítulo + ' - ' + params.data.DesCap;
+            } else {
+              return null;
+            }
+          },
+          cellRendererParams: {
+            suppressCount: true,
+            innerRenderer: params => {
+              console.log('params', params);
+              if (params.node.group) {
+                return params.value;
+              } else {
+                return '';
+              }
+            },
+            footerValueGetter(params) {
+              const val = params.value.split(' - ')[1];
+              return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + val + '</span>';
+            }
+          }
+        },
+        {
+          headerName: '',
+          field: 'CodEco',
+          width: 57,
+          pinned: 'left',
+          filter: false,
+          // comparator(valueA, valueB, nodeA, nodeB, isInverted) {
+          //   return valueA - valueB;
+          // }
+        },
+        {
+          headerName: 'Económico',
+          field: 'DesEco',
+          cellClass: 'resaltado',
+          width: 400,
+          resizable: true,
+          pinned: 'left',
+          filter: false,
+        },
+      ]
     },
 
     {
       headerName: 'Creditos',
+      headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Iniciales',
@@ -156,20 +145,8 @@ export class AppComponent implements OnInit {
           filter: false,
           cellStyle: valueCellStyle,
           aggFunc: 'sum',
-          // suppressSizeToFit: true,
-          // cellRenderer: 'agGroupCellRenderer',
-          // cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
-          // cellRendererParams: {
-          //   suppressCount: true, // turn off the row count
-          //   suppressDoubleClickExpand: true, // turn off double click for expand
-          //   innerRenderer: params => params.value, // provide an inner renderer
-          //   footerValueGetter: function (params) {
-          //     console.log('test loolo00000 params', params);
-          //     return '<span style="color: red; font-size: 14px; padding-right: 5px;">' + params.value + '</span>';
-          //   }
-          // }
         },
         {
           headerName: 'Modificaciones',
@@ -366,28 +343,28 @@ export class AppComponent implements OnInit {
   ];
 
   //  TODO: NO parece hacer nada.
-  autoGroupColumnDef = {
-    headerName: 'Programa',
-    field: 'Programa',
-    cellRenderer: 'agGroupCellRenderer',
-    cellRendererParams: {
-        checkbox: true
-    }
-};
+  // autoGroupColumnDef = {
+  //   headerName: 'Programa',
+  //   field: 'Programa',
+  //   cellRenderer: 'agGroupCellRenderer',
+  //   cellRendererParams: {
+  //     checkbox: true
+  //   }
+  // };
 
   constructor(private http: HttpClient) {
     this.sideBar = 'filters';
-     // we pass an empty gridOptions in, so we can grab the api out
+    // we pass an empty gridOptions in, so we can grab the api out
     this.gridOptions = {} as GridOptions;
     this.gridOptions.defaultColDef = {
-        headerComponentFramework : HeaderComponent as new() => HeaderComponent,
-        headerComponentParams : {
-            menuIcon: 'fa-bars'
-        }
-  };
-}
+      headerComponentFramework: HeaderComponent as new () => HeaderComponent,
+      headerComponentParams: {
+        menuIcon: 'fa-bars'
+      }
+    };
+  }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onGridReady(params) {
     this.gridApi = params.api;
