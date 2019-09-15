@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
     {
       headerName: 'Programa-Capítulo-Económico.',
-      headerGroupComponentFramework: HeaderGroupComponent,
+      // headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Programa',
@@ -51,14 +51,15 @@ export class AppComponent implements OnInit {
           showRowGroup: 'Programa',
           cellRenderer: 'agGroupCellRenderer',
           filter: false,
-          filterValueGetter: params => params.data.Programa,
+          // filterValueGetter: params => params.data.Programa,
           cellRendererParams: {
             suppressCount: true,
             footerValueGetter(params) {
-              return '<span style="color: red; font-size: 14px; font-weight: bold; margin-left: 100px;"> Total ' + params.value + '</span>';
+              return '<span style="color: red; font-size: 14px; font-weight: bold; margin-left: 0px;"> Total ' + params.value + '</span>';
             }
           }
         },
+        // Si no tengo esta parte separada no funciona bien, repite Programa con cada Económico.
         {
           field: 'Programa',
           rowGroup: true,
@@ -84,7 +85,6 @@ export class AppComponent implements OnInit {
           rowGroup: true,
           resizable: true,
           filter: false,
-          // hide: true,
           pinned: 'left',
           showRowGroup: 'DesCap',
           cellRenderer: 'agGroupCellRenderer',
@@ -143,6 +143,7 @@ export class AppComponent implements OnInit {
           width: 100,
           resizable: true,
           filter: false,
+          columnGroupShow: 'open',
           cellStyle: valueCellStyle,
           aggFunc: 'sum',
           cellRenderer: redCellRenderer,
@@ -158,6 +159,7 @@ export class AppComponent implements OnInit {
           // type: 'numericColumn',
           width: 140,
           filter: false,
+          columnGroupShow: 'open'
         },
         {
           headerName: 'Totales',
@@ -168,12 +170,14 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
           width: 140,
           filter: false,
+          // columnGroupShow: 'open' // Se muestra por defecto.
         },
       ]
     },
 
     {
       headerName: 'Gastos',
+      headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Obliga. reconocidas',
@@ -190,6 +194,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Gastos Compromet.',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -200,6 +205,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Gastos Autorizados',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -210,6 +216,7 @@ export class AppComponent implements OnInit {
           field: 'Facturas consumen disp. Pend. Contabilizar',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -220,6 +227,7 @@ export class AppComponent implements OnInit {
           field: 'Gastado en Fase Definitiva',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -230,6 +238,7 @@ export class AppComponent implements OnInit {
           field: 'Gasto Pendiente Aplicar a Presupuesto',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -240,6 +249,7 @@ export class AppComponent implements OnInit {
           field: 'Total gastado',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -250,6 +260,7 @@ export class AppComponent implements OnInit {
 
     {
       headerName: 'Pagos',
+      headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Ordenados',
@@ -266,6 +277,7 @@ export class AppComponent implements OnInit {
           field: 'Pagos Realizados',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -275,7 +287,8 @@ export class AppComponent implements OnInit {
     },
 
     {
-      headerName: 'Saldos de créditos',
+      headerName: 'Saldos créditos',
+      headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Disponibles',
@@ -292,6 +305,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -302,6 +316,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Créditos Retenidos para Trans.',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -312,6 +327,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -322,6 +338,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Crédito Disponible Real',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
@@ -332,6 +349,7 @@ export class AppComponent implements OnInit {
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
           width: 140,
           filter: false,
+          columnGroupShow: 'open',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,

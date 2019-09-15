@@ -21,7 +21,8 @@ export class HeaderGroupComponent implements IHeaderGroupAngularComp {
 
 
     expandOrCollapse() {
-        this.params.setExpanded(!this.expanded);
+      console.log('Expandir o contraer' + this.params.setExpanded);
+      this.params.setExpanded(!this.expanded);
     };
 
     onExpandChanged() {
