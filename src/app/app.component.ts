@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
+
 import { GridOptions } from 'ag-grid-community/main';
 import { HeaderComponent } from './header-component/header.component';
 
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
       filterValueGetter: params => params.data.Programa,
       cellRendererParams: {
         suppressCount: true,
-        footerValueGetter: function (params) {
+        footerValueGetter(params) {
           return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + params.value + '</span>';
         }
       }
@@ -117,7 +118,7 @@ export class AppComponent implements OnInit {
             return '';
           }
         },
-        footerValueGetter: function (params) {
+        footerValueGetter(params) {
           const val = params.value.split(' - ')[1];
           return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + val + '</span>';
         }
@@ -130,9 +131,9 @@ export class AppComponent implements OnInit {
       // cellStyle: cellStyleRight,
       pinned: 'left',
       filter: false,
-      comparator: function (valueA, valueB, nodeA, nodeB, isInverted) {
-        return valueA - valueB;
-      }
+      // comparator(valueA, valueB, nodeA, nodeB, isInverted) {
+      //   return valueA - valueB;
+      // }
     },
     {
       headerName: 'Económico',
@@ -374,22 +375,6 @@ export class AppComponent implements OnInit {
     }
 };
 
-  // No funciona. ................................
-  // gridOptions = {
-  //   defaultColDef: {
-  //     sortable: true,
-  //     resizable: true
-  //   },
-  //    };
-
-  // defaultColDef = {
-  //   width: 150,
-  //   editable: true,
-  //   filter: false,
-  // };
-  // Final No funciona. ................................
-
-
   constructor(private http: HttpClient) {
     this.sideBar = 'filters';
      // we pass an empty gridOptions in, so we can grab the api out
@@ -399,7 +384,7 @@ export class AppComponent implements OnInit {
         headerComponentParams : {
             menuIcon: 'fa-bars'
         }
-  }
+  };
 }
 
   ngOnInit() {}
@@ -433,6 +418,21 @@ function redCellRenderer(params: any) {
     return params.valueFormatted;
   }
 }
+
+ // No funciona. ................................
+  // gridOptions = {
+  //   defaultColDef: {
+  //     sortable: true,
+  //     resizable: true
+  //   },
+  //    };
+
+  // defaultColDef = {
+  //   width: 150,
+  //   editable: true,
+  //   filter: false,
+  // };
+  // Final No funciona. ................................
 
 // function CurrencyCellRenderer(params: any) {
 //   const inrFormat = new Intl.NumberFormat('es-ES', {
