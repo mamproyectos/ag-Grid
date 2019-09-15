@@ -17,7 +17,7 @@ const valueCellStyle = {
 
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
-  title = 'app';
+  // title = 'app';
 
   private gridOptions: GridOptions;
 
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
           cellRendererParams: {
             suppressCount: true,
             footerValueGetter(params) {
-              return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + params.value + '</span>';
+              return '<span style="color: red; font-size: 14px; font-weight: bold; margin-left: 100px;"> Total ' + params.value + '</span>';
             }
           }
         },
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
           cellRendererParams: {
             suppressCount: true,
             innerRenderer: params => {
-              console.log('params', params);
+              // console.log('params', params);
               if (params.node.group) {
                 return params.value;
               } else {
@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
             },
             footerValueGetter(params) {
               const val = params.value.split(' - ')[1];
-              return '<span style="color: red; font-size: 14px; padding-right: 5px;"> Total ' + val + '</span>';
+              return '<span style="color: red; font-size: 12px;  font-weight: bold; margin-left: 0px;"> Total ' + val + '</span>';
             }
           }
         },
@@ -382,7 +382,8 @@ export class AppComponent implements OnInit {
 
 function CurrencyCellRenderer(params: any) {
   if (params.value) {
-    return params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    // return params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    return  '<span style=" text-align: right;">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</span>';
   } else {
     return null;
   }
@@ -390,7 +391,7 @@ function CurrencyCellRenderer(params: any) {
 
 function redCellRenderer(params: any) {
   if (params.node.footer) {
-    return '<span style="color: red; font-size: 14px; padding-right: 5px;">' + params.valueFormatted + '</span>';
+    return '<span style="color: red; font-size: 14px;">' + params.valueFormatted + '</span>';
   } else {
     return params.valueFormatted;
   }
