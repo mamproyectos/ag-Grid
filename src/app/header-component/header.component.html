@@ -5,7 +5,12 @@
        <i class="{{'fa ' + params.menuIcon}}"></i>
     </div>
     <!-- <div class="customHeaderLabel">{{ params.displayName }}</div> -->
-    <div class="customHeaderLabel">{{ myHeaderName }}</div>
+    <div class="customHeaderLabel">{{ myHeaderNameLin1 }}</div>
+    <br>
+    <div class="customHeaderLabel">{{ myHeaderNameLin2 }}</div>
+    <br>
+    <div class="customHeaderLabel">{{ myHeaderNameLin3 }}</div>
+    <br>
     <div [hidden]="!params.enableSorting"
        class="{{'customSortDownLabel'+ (this.sorted === 'desc' ? ' active' : '') }}"
        (click)="onSortRequested('desc', $event)">

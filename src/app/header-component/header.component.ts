@@ -17,7 +17,11 @@ export class HeaderComponent implements IHeaderAngularComp {
     private elementRef: ElementRef;
 
     myHeaderName: string;
+    myHeaderNameArray: any;
     lengthMyHeaderName: number;
+    myHeaderNameLin1: string;
+    myHeaderNameLin2: string;
+    myHeaderNameLin3: string;
 
     constructor(elementRef: ElementRef) {
         this.elementRef = elementRef;
@@ -31,6 +35,11 @@ export class HeaderComponent implements IHeaderAngularComp {
         this.myHeaderName = this.myHeaderNameFunct();
         this.lengthMyHeaderName = this.myHeaderName.length;
         this.myHeaderName = this.myHeaderName.slice(4, this.lengthMyHeaderName - 1);
+        this.myHeaderNameArray = this.myHeaderName.split(',');
+        // console.log(this.myHeaderNameArray);
+        this.myHeaderNameLin1 =  this.myHeaderNameArray[0];
+        this.myHeaderNameLin2 =  this.myHeaderNameArray[1];
+        this.myHeaderNameLin3 =  this.myHeaderNameArray[2];
     }
 
     ngOnDestroy() {

@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
   public sideBar;
   rowData: any;
   groupHeaderHeight = 25;
-  headerHeight = 50;
+  headerHeight = 75;
+
 
   private gridApi;
   private gridColumnApi;
@@ -138,7 +139,8 @@ export class AppComponent implements OnInit {
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
-          headerName: 'Iniciales',
+          // para separar el headerName en 3 lineas debe contener DOS comas.
+          headerName: 'Iniciales,,',
           headerComponentFramework: HeaderComponent,
           field: 'Créditos Iniciales',
           width: 140,
@@ -151,7 +153,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Modificación',
+          headerName: 'Modificación,,',
           headerComponentFramework: HeaderComponent,
           field: 'Modificaciones de Crédito',
           aggFunc: 'sum',
@@ -164,7 +166,7 @@ export class AppComponent implements OnInit {
           columnGroupShow: 'open'
         },
         {
-          headerName: 'Totales',
+          headerName: 'Creditos,totales,consignados',
           headerComponentFramework: HeaderComponent,
           field: 'Créditos Totales consignados',
           aggFunc: 'sum',
@@ -183,7 +185,7 @@ export class AppComponent implements OnInit {
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
-          headerName: 'Obliga. reconocidas',
+          headerName: 'Obligaciones,reconocidas,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Obligaciones Reconocidas',
           width: 140,
@@ -194,7 +196,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Comprometidos',
+          headerName: 'Comprometidos,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Compromet.',
           width: 140,
@@ -206,7 +208,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Autorizados',
+          headerName: 'Autorizados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Autorizados',
           width: 140,
@@ -218,7 +220,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Facturas consumen disp. Pend. Contabilizar',
+          headerName: 'Facturas consumen, disp., Pend. Contabilizar',
           headerComponentFramework: HeaderComponent,
           field: 'Facturas consumen disp. Pend. Contabilizar',
           width: 140,
@@ -230,7 +232,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Fase definitiva',
+          headerName: 'Fase,definitiva,',
           headerComponentFramework: HeaderComponent,
           field: 'Gastado en Fase Definitiva',
           width: 140,
@@ -242,7 +244,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Pendiente Aplicar a Presupuesto',
+          headerName: 'Pendiente,Aplicar,a Presupuesto',
           headerComponentFramework: HeaderComponent,
           field: 'Gasto Pendiente Aplicar a Presupuesto',
           width: 140,
@@ -254,7 +256,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Total gastado',
+          headerName: 'Total,gastado,',
           headerComponentFramework: HeaderComponent,
           field: 'Total gastado',
           width: 140,
@@ -273,7 +275,7 @@ export class AppComponent implements OnInit {
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
-          headerName: 'Ordenados',
+          headerName: 'Ordenados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Pagos Ordenados',
           width: 140,
@@ -284,7 +286,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Realizados',
+          headerName: 'Realizados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Pagos Realizados',
           width: 140,
@@ -303,7 +305,7 @@ export class AppComponent implements OnInit {
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
-          headerName: 'Disponibles',
+          headerName: 'Disponibles,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disponibles',
           width: 140,
@@ -314,7 +316,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Acuerdo no disponibilidad',
+          headerName: 'Acuerdo no,disponibilidad,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
           width: 140,
@@ -326,7 +328,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Retenidos transferencias',
+          headerName: 'Retenidos,transferencias,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos para Trans.',
           width: 140,
@@ -338,7 +340,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Retenidos pdtes de utilización',
+          headerName: 'Retenidos,pendientes,de utilización',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
           width: 140,
@@ -350,7 +352,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Disponible real',
+          headerName: 'Disponible,real,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Crédito Disponible Real',
           width: 140,
@@ -362,7 +364,7 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Disponibles vinculación',
+          headerName: 'Disponibles,a nivel,vinculación',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
           width: 140,
