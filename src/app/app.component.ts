@@ -163,7 +163,11 @@ export class AppComponent implements OnInit {
           // type: 'numericColumn',
           width: 140,
           filter: false,
-          columnGroupShow: 'open'
+          columnGroupShow: 'open',
+          footerValueGetter(params) {
+            const val = params.value;
+            return '<span style="color: green; font-size: 12px;  font-weight: bold; margin-left: 0px;"> Total ' + val + '</span>';
+          }
         },
         {
           headerName: 'Creditos,totales,consignados',

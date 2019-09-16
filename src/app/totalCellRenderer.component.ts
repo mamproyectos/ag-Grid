@@ -4,7 +4,7 @@ import {ICellRendererAngularComp} from 'ag-grid-angular';
 
 @Component({
   selector: 'square-cell',
-  template: `<span style="color: red;"> Total {{params.value}} </span>`
+  template: `<span style="color: green;"> Total {{params.value}} </span>`
 })
 export class TotalCellRendererComponent implements ICellRendererAngularComp, OnDestroy {
   params: any;

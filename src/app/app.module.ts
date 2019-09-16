@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
-import { TotalCellRendererComponent } from './totalCellRenderer.component';
+// import { TotalCellRendererComponent } from './totalCellRenderer.component';
 
 import { HeaderComponent } from './header-component/header.component';
 import { HeaderGroupComponent } from './header-group-component/header-group.component';
@@ -15,7 +15,7 @@ import { HeaderGroupComponent } from './header-group-component/header-group.comp
   declarations: [
     AppComponent,
     FooterComponent,
-    TotalCellRendererComponent,
+    // TotalCellRendererComponent,
     HeaderComponent,
     HeaderGroupComponent
   ],
@@ -23,7 +23,7 @@ import { HeaderGroupComponent } from './header-group-component/header-group.comp
     BrowserModule,
     HttpClientModule,
     AgGridModule.withComponents([
-      TotalCellRendererComponent,
+      // TotalCellRendererComponent,
       HeaderComponent,
       HeaderGroupComponent
     ])
