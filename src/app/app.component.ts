@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   public sideBar;
   rowData: any;
   groupHeaderHeight = 25;
-  headerHeight = 25;
+  headerHeight = 50;
 
   private gridApi;
   private gridColumnApi;
@@ -139,8 +139,9 @@ export class AppComponent implements OnInit {
       children: [
         {
           headerName: 'Iniciales',
+          headerComponentFramework: HeaderComponent,
           field: 'Créditos Iniciales',
-          width: 100,
+          width: 140,
           resizable: true,
           filter: false,
           columnGroupShow: 'open',
@@ -150,7 +151,8 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Modificaciones',
+          headerName: 'Modificación',
+          headerComponentFramework: HeaderComponent,
           field: 'Modificaciones de Crédito',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
@@ -163,6 +165,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Totales',
+          headerComponentFramework: HeaderComponent,
           field: 'Créditos Totales consignados',
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
@@ -181,6 +184,7 @@ export class AppComponent implements OnInit {
       children: [
         {
           headerName: 'Obliga. reconocidas',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Obligaciones Reconocidas',
           width: 140,
           filter: false,
@@ -191,6 +195,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Comprometidos',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Compromet.',
           width: 140,
           filter: false,
@@ -202,6 +207,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Autorizados',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Autorizados',
           width: 140,
           filter: false,
@@ -213,6 +219,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Facturas consumen disp. Pend. Contabilizar',
+          headerComponentFramework: HeaderComponent,
           field: 'Facturas consumen disp. Pend. Contabilizar',
           width: 140,
           filter: false,
@@ -224,6 +231,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Fase definitiva',
+          headerComponentFramework: HeaderComponent,
           field: 'Gastado en Fase Definitiva',
           width: 140,
           filter: false,
@@ -235,6 +243,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Pendiente Aplicar a Presupuesto',
+          headerComponentFramework: HeaderComponent,
           field: 'Gasto Pendiente Aplicar a Presupuesto',
           width: 140,
           filter: false,
@@ -246,6 +255,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Total gastado',
+          headerComponentFramework: HeaderComponent,
           field: 'Total gastado',
           width: 140,
           filter: false,
@@ -264,6 +274,7 @@ export class AppComponent implements OnInit {
       children: [
         {
           headerName: 'Ordenados',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Pagos Ordenados',
           width: 140,
           filter: false,
@@ -274,6 +285,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Realizados',
+          headerComponentFramework: HeaderComponent,
           field: 'Pagos Realizados',
           width: 140,
           filter: false,
@@ -292,6 +304,7 @@ export class AppComponent implements OnInit {
       children: [
         {
           headerName: 'Disponibles',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disponibles',
           width: 140,
           filter: false,
@@ -302,6 +315,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Acuerdo no disponibilidad',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
           width: 140,
           filter: false,
@@ -313,6 +327,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Retenidos transferencias',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos para Trans.',
           width: 140,
           filter: false,
@@ -324,6 +339,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Retenidos pdtes de utilización',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
           width: 140,
           filter: false,
@@ -335,6 +351,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Disponible real',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Crédito Disponible Real',
           width: 140,
           filter: false,
@@ -346,6 +363,7 @@ export class AppComponent implements OnInit {
         },
         {
           headerName: 'Disponibles vinculación',
+          headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
           width: 140,
           filter: false,

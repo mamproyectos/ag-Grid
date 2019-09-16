@@ -5,9 +5,12 @@
 }
 
 .customHeaderLabel{
-    margin-left: 5px;
+    margin-left: 0px;
     margin-top: 3px;
     float: left;
+    font-size: 9px;
+    color:black;
+    font-weight: bold;
 }
 
 .customSortDownLabel{

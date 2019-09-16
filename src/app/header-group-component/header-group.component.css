@@ -30,8 +30,6 @@
     transform: rotate(0deg);
 }
 
-
-
 @keyframes  toExpanded{
     from {
         color: cornflowerblue;
