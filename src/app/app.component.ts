@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   rowData: any;
   groupHeaderHeight = 25;
   headerHeight = 75;
+  HeaderNumericWidth = 98;
 
 
   private gridApi;
@@ -40,8 +41,7 @@ export class AppComponent implements OnInit {
     // },
     // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
 
-    {
-      headerName: 'Programa-Capítulo-Económico.',
+    { headerName: 'Programa-Capítulo-Económico.',
       // headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
@@ -134,8 +134,7 @@ export class AppComponent implements OnInit {
       ]
     },
 
-    {
-      headerName: 'Creditos',
+    { headerName: 'Creditos',
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
@@ -143,7 +142,7 @@ export class AppComponent implements OnInit {
           headerName: 'Iniciales,,',
           headerComponentFramework: HeaderComponent,
           field: 'Créditos Iniciales',
-          width: 140,
+          width: this.HeaderNumericWidth,
           resizable: true,
           filter: false,
           columnGroupShow: 'open',
@@ -161,7 +160,7 @@ export class AppComponent implements OnInit {
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
           // type: 'numericColumn',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           footerValueGetter(params) {
@@ -177,22 +176,21 @@ export class AppComponent implements OnInit {
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           // columnGroupShow: 'open' // Se muestra por defecto.
         },
       ]
     },
 
-    {
-      headerName: 'Gastos',
+    { headerName: 'Gastos',
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Obligaciones,reconocidas,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Obligaciones Reconocidas',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
@@ -203,7 +201,7 @@ export class AppComponent implements OnInit {
           headerName: 'Comprometidos,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Compromet.',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -215,7 +213,7 @@ export class AppComponent implements OnInit {
           headerName: 'Autorizados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Gastos Autorizados',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -224,10 +222,10 @@ export class AppComponent implements OnInit {
           valueFormatter: CurrencyCellRenderer,
         },
         {
-          headerName: 'Facturas consumen, disp., Pend. Contabilizar',
+          headerName: 'Facturas, consumen disp., Pend. Contabilizar',
           headerComponentFramework: HeaderComponent,
           field: 'Facturas consumen disp. Pend. Contabilizar',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -239,7 +237,7 @@ export class AppComponent implements OnInit {
           headerName: 'Fase,definitiva,',
           headerComponentFramework: HeaderComponent,
           field: 'Gastado en Fase Definitiva',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -251,7 +249,7 @@ export class AppComponent implements OnInit {
           headerName: 'Pendiente,Aplicar,a Presupuesto',
           headerComponentFramework: HeaderComponent,
           field: 'Gasto Pendiente Aplicar a Presupuesto',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -263,7 +261,7 @@ export class AppComponent implements OnInit {
           headerName: 'Total,gastado,',
           headerComponentFramework: HeaderComponent,
           field: 'Total gastado',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -274,15 +272,14 @@ export class AppComponent implements OnInit {
       ]
     },
 
-    {
-      headerName: 'Pagos',
+    { headerName: 'Pagos',
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Ordenados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Pagos Ordenados',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
@@ -293,7 +290,7 @@ export class AppComponent implements OnInit {
           headerName: 'Realizados,,',
           headerComponentFramework: HeaderComponent,
           field: 'Pagos Realizados',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -304,15 +301,14 @@ export class AppComponent implements OnInit {
       ]
     },
 
-    {
-      headerName: 'Saldos créditos',
+    { headerName: 'Saldos créditos',
       headerGroupComponentFramework: HeaderGroupComponent,
       children: [
         {
           headerName: 'Disponibles,,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disponibles',
-          width: 140,
+          width: this.HeaderNumericWidth + 30, // + espacio para la fecha de despliegue.
           filter: false,
           aggFunc: 'sum',
           cellStyle: valueCellStyle,
@@ -323,7 +319,7 @@ export class AppComponent implements OnInit {
           headerName: 'Acuerdo no,disponibilidad,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Acuerd. Créd. para No Disponibil.',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -335,7 +331,7 @@ export class AppComponent implements OnInit {
           headerName: 'Retenidos,transferencias,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos para Trans.',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -347,7 +343,7 @@ export class AppComponent implements OnInit {
           headerName: 'Retenidos,pendientes,de utilización',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos Retenidos pdtes de utilización',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -359,7 +355,7 @@ export class AppComponent implements OnInit {
           headerName: 'Disponible,real,',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Crédito Disponible Real',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -371,7 +367,7 @@ export class AppComponent implements OnInit {
           headerName: 'Disponibles,a nivel,vinculación',
           headerComponentFramework: HeaderComponent,
           field: 'Saldo de Créditos disp. a nivel de Vinculación',
-          width: 140,
+          width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
