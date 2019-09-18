@@ -20,26 +20,17 @@ export class AppComponent implements OnInit {
   // title = 'app';
 
   private gridOptions: GridOptions;
-
-  public sideBar;
-  rowData: any;
-  groupHeaderHeight = 25;
-  headerHeight = 75;
-  HeaderNumericWidth = 98;
-
+  private sideBar;
+  private rowData: any;
+  private groupHeaderHeight = 25;
+  private headerHeight = 75;
+  private HeaderNumericWidth = 98;
 
   private gridApi;
   private gridColumnApi;
 
   columnDefs = [
-    // {
-    //   headerName: '',
-    //   field: 'Cod Pro',
-    //   width: 57,
-    //   cellStyle: cellStyleRight,
-    //   hide: true
-    // },
-    // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
+      // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
 
     { headerName: 'Programa-Capítulo-Económico.',
       // headerGroupComponentFramework: HeaderGroupComponent,
@@ -297,6 +288,7 @@ export class AppComponent implements OnInit {
           cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
+
         },
       ]
     },
@@ -377,18 +369,7 @@ export class AppComponent implements OnInit {
         },
       ]
     }
-
   ];
-
-  //  TODO: NO parece hacer nada.
-  // autoGroupColumnDef = {
-  //   headerName: 'Programa',
-  //   field: 'Programa',
-  //   cellRenderer: 'agGroupCellRenderer',
-  //   cellRendererParams: {
-  //     checkbox: true
-  //   }
-  // };
 
   constructor(private http: HttpClient) {
     this.sideBar = 'filters';
@@ -420,10 +401,10 @@ export class AppComponent implements OnInit {
 
 function CurrencyCellRenderer(params: any) {
   if (params.value) {
-    // return params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    return  '<span style=" text-align: right;">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</span>';
+    // console.log(params);
+    return  '<span style=" text-align: right; color: blue;">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</span>';
   } else {
-    return null;
+    return '';
   }
 }
 
@@ -434,6 +415,24 @@ function redCellRenderer(params: any) {
     return params.valueFormatted;
   }
 }
+
+  // {
+    //   headerName: '',
+    //   field: 'Cod Pro',
+    //   width: 57,
+    //   cellStyle: cellStyleRight,
+    //   hide: true
+    // },
+
+ //  TODO: NO parece hacer nada.
+  // autoGroupColumnDef = {
+  //   headerName: 'Programa',
+  //   field: 'Programa',
+  //   cellRenderer: 'agGroupCellRenderer',
+  //   cellRendererParams: {
+  //     checkbox: true
+  //   }
+  // };
 
  // No funciona. ................................
   // gridOptions = {
