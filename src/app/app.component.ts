@@ -356,7 +356,9 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(private http: HttpClient) {
-    this.sideBar = 'filters';
+    this.sideBar = {
+      toolPanels: ['filters', 'columns']
+    };
     // we pass an empty gridOptions in, so we can grab the api out
     this.gridOptions = {} as GridOptions;
     this.gridOptions.defaultColDef = {
@@ -388,9 +390,9 @@ function CellRendererOCM(params: any) {
     const valorFormateado = params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     if (params.node.footer) {
       switch (params.node.level) {
-        case 1: // Total programa.
+        case 1: // Total capítulo.
           return '<p style="text-align: right; color: red; font-size: 12px; font-weight: bold">' + valorFormateado + '</p>';
-        case 0:  // Total capítulo.
+        case 0:  // Total programa.
           return '<p style="text-align: right; color: red; font-size: 13px; font-weight: bold">' + valorFormateado + '</p>';
         case -1: // Total general.
           return '<p style="text-align: right; color: red; font-size: 14px; font-weight: bold">' + valorFormateado + '</p>';
