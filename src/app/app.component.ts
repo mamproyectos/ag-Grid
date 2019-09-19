@@ -6,9 +6,6 @@ import { GridOptions } from 'ag-grid-community/main';
 import { HeaderComponent } from './header-component/header.component';
 import { HeaderGroupComponent } from './header-group-component/header-group.component';
 
-const valueCellStyle = {
-  'text-align': 'right'
-};
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -137,7 +134,6 @@ export class AppComponent implements OnInit {
           resizable: true,
           filter: false,
           columnGroupShow: 'open',
-          cellStyle: valueCellStyle,
           aggFunc: 'sum',
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
@@ -147,7 +143,6 @@ export class AppComponent implements OnInit {
           headerComponentFramework: HeaderComponent,
           field: 'Modificaciones de Crédito',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
           // type: 'numericColumn',
@@ -163,13 +158,18 @@ export class AppComponent implements OnInit {
           headerName: 'Creditos,totales,consignados',
           headerComponentFramework: HeaderComponent,
           field: 'Créditos Totales consignados',
-          aggFunc: 'sum',
-          cellStyle: valueCellStyle,
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
           width: this.HeaderNumericWidth,
           filter: false,
-          // columnGroupShow: 'open' // Se muestra por defecto.
+          columnGroupShow: 'Closed', // Se muestra por defecto.
+          aggFunc: 'sum',
+
+          // No muestra los valores del detalle por Capitulo ni el de Economico.
+          // valueGetter(params) {
+          //   return params.data['Créditos Totales consignados'];
+          // },
+
+          cellRenderer: redCellRenderer,
+          valueFormatter: CurrencyCellRenderer,
         },
       ]
     },
@@ -184,7 +184,6 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -196,7 +195,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -208,7 +206,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -220,7 +217,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -232,7 +228,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -244,7 +239,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -256,7 +250,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -273,7 +266,6 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -285,10 +277,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
-
         },
       ]
     },
@@ -303,7 +293,6 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth + 30, // + espacio para la fecha de despliegue.
           filter: false,
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -315,7 +304,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -327,7 +315,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -339,7 +326,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -351,7 +337,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -363,7 +348,6 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellStyle: valueCellStyle,
           cellRenderer: redCellRenderer,
           valueFormatter: CurrencyCellRenderer,
         },
@@ -401,8 +385,8 @@ export class AppComponent implements OnInit {
 
 function CurrencyCellRenderer(params: any) {
   if (params.value) {
-    // console.log(params);
-    return  '<span style=" text-align: right; color: blue;">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</span>';
+        console.log(params.value);
+        return  '<p style=" text-align: right">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</p>';
   } else {
     return '';
   }
