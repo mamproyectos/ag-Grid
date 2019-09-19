@@ -135,23 +135,23 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Modificación,,',
           headerComponentFramework: HeaderComponent,
           field: 'Modificaciones de Crédito',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
           // type: 'numericColumn',
           width: this.HeaderNumericWidth,
           filter: false,
           columnGroupShow: 'open',
           footerValueGetter(params) {
             const val = params.value;
-            return '<span style="color: green; font-size: 12px;  font-weight: bold; margin-left: 0px;"> Total ' + val + '</span>';
+            return '<span style="color: green; font-size: 12px; font-weight: bold; margin-left: 0px;"> Total ' + val + '</span>';
           }
         },
         {
@@ -168,8 +168,8 @@ export class AppComponent implements OnInit {
           //   return params.data['Créditos Totales consignados'];
           // },
 
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
       ]
     },
@@ -184,8 +184,8 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Comprometidos,,',
@@ -195,8 +195,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Autorizados,,',
@@ -206,8 +206,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Facturas, consumen disp., Pend. Contabilizar',
@@ -217,8 +217,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Fase,definitiva,',
@@ -228,8 +228,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Pendiente,Aplicar,a Presupuesto',
@@ -239,8 +239,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Total,gastado,',
@@ -250,8 +250,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
       ]
     },
@@ -266,8 +266,8 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth,
           filter: false,
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Realizados,,',
@@ -277,8 +277,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
       ]
     },
@@ -293,8 +293,8 @@ export class AppComponent implements OnInit {
           width: this.HeaderNumericWidth + 30, // + espacio para la fecha de despliegue.
           filter: false,
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Acuerdo no,disponibilidad,',
@@ -304,8 +304,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Retenidos,transferencias,',
@@ -315,8 +315,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Retenidos,pendientes,de utilización',
@@ -326,8 +326,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Disponible,real,',
@@ -337,8 +337,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
         {
           headerName: 'Disponibles,a nivel,vinculación',
@@ -348,8 +348,8 @@ export class AppComponent implements OnInit {
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
-          cellRenderer: redCellRenderer,
-          valueFormatter: CurrencyCellRenderer,
+          cellRenderer: CellRendererOCM
+          ,
         },
       ]
     }
@@ -383,24 +383,20 @@ export class AppComponent implements OnInit {
   }
 }
 
-function CurrencyCellRenderer(params: any) {
+function CellRendererOCM(params: any) {
   if (params.value) {
-        console.log(params.value);
-        return  '<p style=" text-align: right">' + params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + '</p>';
+    const valorFormateado = params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    if (params.node.footer) {
+      return '<p style="text-align: right; color: red; font-size: 12px; font-weight: bold">' + valorFormateado + '</p>';
+    } else {
+      return '<p style="text-align: right">' + valorFormateado + '</p>';
+    }
   } else {
     return '';
   }
 }
 
-function redCellRenderer(params: any) {
-  if (params.node.footer) {
-    return '<span style="color: red; font-size: 14px;">' + params.valueFormatted + '</span>';
-  } else {
-    return params.valueFormatted;
-  }
-}
-
-  // {
+// {
     //   headerName: '',
     //   field: 'Cod Pro',
     //   width: 57,
