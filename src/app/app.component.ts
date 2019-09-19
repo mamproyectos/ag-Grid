@@ -387,7 +387,16 @@ function CellRendererOCM(params: any) {
   if (params.value) {
     const valorFormateado = params.value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     if (params.node.footer) {
-      return '<p style="text-align: right; color: red; font-size: 12px; font-weight: bold">' + valorFormateado + '</p>';
+      switch (params.node.level) {
+        case 1: // Total programa.
+          return '<p style="text-align: right; color: red; font-size: 12px; font-weight: bold">' + valorFormateado + '</p>';
+        case 0:  // Total capítulo.
+          return '<p style="text-align: right; color: red; font-size: 13px; font-weight: bold">' + valorFormateado + '</p>';
+        case -1: // Total general.
+          return '<p style="text-align: right; color: red; font-size: 14px; font-weight: bold">' + valorFormateado + '</p>';
+        default:
+          return 'SIN FORMATO';
+      }
     } else {
       return '<p style="text-align: right">' + valorFormateado + '</p>';
     }
@@ -395,6 +404,7 @@ function CellRendererOCM(params: any) {
     return '';
   }
 }
+
 
 // {
     //   headerName: '',
