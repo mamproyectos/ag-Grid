@@ -16,12 +16,10 @@ export class HeaderComponent implements IHeaderAngularComp {
     public sorted: string;
     private elementRef: ElementRef;
 
-    myHeaderName: string;
-    lengthMyHeaderName: number;
-    myHeaderNameArray: any;
-    myHeaderNameLin1: string;
-    myHeaderNameLin2: string;
-    myHeaderNameLin3: string;
+    private myHeaderNameArray: any;
+    private myHeaderNameLinea1: string;
+    private myHeaderNameLinea2: string;
+    private myHeaderNameLinea3: string;
 
     constructor(elementRef: ElementRef) {
         this.elementRef = elementRef;
@@ -32,14 +30,11 @@ export class HeaderComponent implements IHeaderAngularComp {
         this.params.column.addEventListener('sortChanged', this.onSortChanged.bind(this));
         this.onSortChanged();
 
-        this.myHeaderName = this.myHeaderNameFunct();
-        this.lengthMyHeaderName = this.myHeaderName.length;
-        this.myHeaderName = this.myHeaderName.slice(4, this.lengthMyHeaderName - 1);
-        this.myHeaderNameArray = this.myHeaderName.split(',');
-        // console.log(this.myHeaderNameArray);
-        this.myHeaderNameLin1 =  this.myHeaderNameArray[0];
-        this.myHeaderNameLin2 =  this.myHeaderNameArray[1];
-        this.myHeaderNameLin3 =  this.myHeaderNameArray[2];
+        // Se recibe un string separado por comas, cada coma se convierte en una linea.
+        this.myHeaderNameArray = this.params.displayName.slice(4, this.params.displayName.length - 1).split(',');
+        this.myHeaderNameLinea1 =  this.myHeaderNameArray[0];
+        this.myHeaderNameLinea2 =  this.myHeaderNameArray[1];
+        this.myHeaderNameLinea3 =  this.myHeaderNameArray[2];
     }
 
     ngOnDestroy() {
@@ -62,10 +57,6 @@ export class HeaderComponent implements IHeaderAngularComp {
         } else {
             this.sorted = '';
         }
-    }
-
-    private myHeaderNameFunct() {
-      return this.params.displayName;
     }
 
     private querySelector(selector: string) {
