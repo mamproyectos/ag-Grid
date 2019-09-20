@@ -6,3 +6,8 @@
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss";
 
 $odd-row-background-color: rgb(238, 20, 68);
+
+// Cambia la altura del combo de busqueda.
+#richList{
+  height: 800px !Important;
+}
