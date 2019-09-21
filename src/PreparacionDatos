@@ -2,7 +2,7 @@ Renombrar Excel publicado terminando en OCM.
 Eliminar fila de cabecera.
 Eliminar fila totales.
 Añadir columna "Capítulo".
-Extraer primer caracter de "Economico".
+Extraer primer caracter de "Economico" en esta columna.
 Cambiar a tipo numero.
 Grabar.
 
