@@ -15,19 +15,27 @@ import { HeaderGroupComponent } from './header-group-component/header-group.comp
 export class AppComponent implements OnInit {
   @ViewChild('agGrid', { static: false }) agGrid: AgGridAngular;
   // title = 'app';
+  private gridApi;
+  private gridColumnApi;
 
+  private columnDefs;
+  private defaultColDef;
   private gridOptions: GridOptions;
   private localeText;
   private sideBar;
   private rowData: any;
+  private defaultSortModel;
+  private rowGroupPanelShow;
+  private statusBar;
+  private paginationPageSize;
+
   private groupHeaderHeight = 25;
   private headerHeight = 75;
   private HeaderNumericWidth = 98;
 
-  private gridApi;
-  private gridColumnApi;
 
-  columnDefs = [
+  constructor(private http: HttpClient) {
+    this.columnDefs = [
       // https://www.ag-grid.com/javascript-grid-provided-renderer-group/
 
     { headerName: 'Programa-Capítulo-Económico.',
@@ -37,7 +45,6 @@ export class AppComponent implements OnInit {
           headerName: 'Programa',
           width: 500,
           pinned: 'left',
-          resizable: true,
           showRowGroup: 'Programa',
           cellRenderer: 'agGroupCellRenderer',
           filter: false,
@@ -54,26 +61,21 @@ export class AppComponent implements OnInit {
           field: 'Programa',
           rowGroup: true,
           hide: true,
-          pinned: 'left',
-          resizable: true,
-          filter: true,
-        },
+          pinned: 'left'
+         },
         {
           headerName: '',
           field: 'Capítulo',
           width: 10,
           hide: true,
           pinned: 'left',
-          resizable: true,
-          filter: false,
-          sortable: true,
+          filter: false
         },
         {
           headerName: 'Capítulo',
           field: 'DesCap',
           width: 300,
           rowGroup: true,
-          resizable: true,
           filter: false,
           pinned: 'left',
           showRowGroup: 'DesCap',
@@ -116,7 +118,6 @@ export class AppComponent implements OnInit {
           field: 'DesEco',
           cellClass: 'resaltado',
           width: 400,
-          resizable: true,
           pinned: 'left',
           filter: false,
         },
@@ -132,7 +133,6 @@ export class AppComponent implements OnInit {
           headerComponentFramework: HeaderComponent,
           field: 'Créditos Iniciales',
           width: this.HeaderNumericWidth,
-          resizable: true,
           filter: false,
           columnGroupShow: 'open',
           aggFunc: 'sum',
@@ -356,10 +356,28 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  constructor(private http: HttpClient) {
+    this.defaultColDef = {
+    sortable: true,
+    resizable: true,
+    filter: true
+  };
+
     this.sideBar = {
       toolPanels: ['filters', 'columns']
     };
+
+    // this.rowGroupPanelShow = 'always';
+    // this.statusBar = {
+    //   statusPanels: [
+    //     {
+    //       statusPanel: 'agTotalAndFilteredRowCountComponent',
+    //       align: 'left'
+    //     },
+    //     { statusPanel: 'agAggregationComponent' }
+    //   ]
+    // };
+    // this.paginationPageSize = 500;
+
     // we pass an empty gridOptions in, so we can grab the api out
     this.gridOptions = {} as GridOptions;
     this.gridOptions.defaultColDef = {
@@ -368,6 +386,13 @@ export class AppComponent implements OnInit {
         menuIcon: 'fa-bars'
       }
     };
+
+    this.defaultSortModel = [
+      {
+        colId: 'CodEco',
+        sort: 'asc'
+      }
+    ];
 
     this.localeText = {
       // for filter panel
@@ -572,7 +597,6 @@ export class AppComponent implements OnInit {
       noDataToChart: 'laNo data available to be charted.',
       pivotChartRequiresPivotMode: 'laPivot Chart requires Pivot Mode enabled.'
     };
-
   }
 
   ngOnInit() { }
@@ -580,14 +604,9 @@ export class AppComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+
     this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
-    const defaultSortModel = [
-      {
-        colId: 'CodEco',
-        sort: 'asc'
-      }
-    ];
-    params.api.setSortModel(defaultSortModel);
+    params.api.setSortModel(this.defaultSortModel);
   }
 }
 
@@ -631,21 +650,6 @@ function CellRendererOCM(params: any) {
   //     checkbox: true
   //   }
   // };
-
- // No funciona. ................................
-  // gridOptions = {
-  //   defaultColDef: {
-  //     sortable: true,
-  //     resizable: true
-  //   },
-  //    };
-
-  // defaultColDef = {
-  //   width: 150,
-  //   editable: true,
-  //   filter: false,
-  // };
-  // Final No funciona. ................................
 
 // function CurrencyCellRenderer(params: any) {
 //   const inrFormat = new Intl.NumberFormat('es-ES', {

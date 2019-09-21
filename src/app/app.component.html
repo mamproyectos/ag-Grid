@@ -45,6 +45,7 @@
     [enableFilter]="true"
     [rowData]="rowData | async"
     [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
     rowSelection="multiple"
     [groupSuppressAutoColumn]="true"
     [groupIncludeFooter]="true"
@@ -54,6 +55,9 @@
     [headerHeight]="headerHeight"
     [sideBar]="sideBar"
     [localeText]="localeText"
+    [rowGroupPanelShow]="rowGroupPanelShow"
+    [statusBar]="statusBar"
+    [paginationPageSize]="paginationPageSize"
     (gridReady)="onGridReady($event)"
     >
 </ag-grid-angular>
