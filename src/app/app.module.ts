@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import { HeaderComponent } from './header-component/header.component';
 import { HeaderGroupComponent } from './header-group-component/header-group.component';
+import { HeaderOCMComponent } from './header-ocm/header-ocm.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HeaderGroupComponent } from './header-group-component/header-group.comp
     FooterComponent,
     // TotalCellRendererComponent,
     HeaderComponent,
-    HeaderGroupComponent
+    HeaderGroupComponent,
+    HeaderOCMComponent
   ],
   imports: [
     BrowserModule,
