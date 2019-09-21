@@ -35,8 +35,7 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.columnDefs = [
-      {
-        headerName: 'Programa-Capítulo-Económico.',
+      {headerName: 'Programa-Capítulo-Económico.',
         children: [
           {
             headerName: 'Programa',
@@ -131,8 +130,7 @@ export class AppComponent implements OnInit {
         ]
       },
 
-      {
-        headerName: 'Creditos',
+      {headerName: 'Creditos',
         headerGroupComponentFramework: HeaderGroupComponent,
         children: [
           {
@@ -177,8 +175,7 @@ export class AppComponent implements OnInit {
         ]
       },
 
-      {
-        headerName: 'Gastos',
+      {headerName: 'Gastos',
         headerGroupComponentFramework: HeaderGroupComponent,
         children: [
           {
@@ -260,8 +257,7 @@ export class AppComponent implements OnInit {
         ]
       },
 
-      {
-        headerName: 'Pagos',
+      {headerName: 'Pagos',
         headerGroupComponentFramework: HeaderGroupComponent,
         children: [
           {
@@ -288,8 +284,7 @@ export class AppComponent implements OnInit {
         ]
       },
 
-      {
-        headerName: 'Saldos créditos',
+      {headerName: 'Saldos créditos',
         headerGroupComponentFramework: HeaderGroupComponent,
         children: [
           {
@@ -414,7 +409,7 @@ export class AppComponent implements OnInit {
       // for set filter
       selectAll: 'Seleccionar todos',
       searchOoo: 'Buscar...',
-      blanks: 'daBlanc',
+      blanks: 'Blanco',
 
       // for number filter and text filter
       filterOoo: 'Filtrar...',
@@ -445,13 +440,13 @@ export class AppComponent implements OnInit {
       // tool panel
       columns: 'Columnas',
       filters: 'Programas',
-      rowGroupColumns: 'laPivot Cols',
+      rowGroupColumns: 'Pivot Cols',
       rowGroupColumnsEmptyMessage: 'la drag cols to group',
-      valueColumns: 'laValue Cols',
+      valueColumns: 'Value Cols',
       pivotMode: 'Pivot-Mode',
-      groups: 'laGroups',
-      values: 'laValues',
-      pivots: 'laPivots',
+      groups: 'Groups',
+      values: 'Values',
+      pivots: 'Pivots',
       valueColumnsEmptyMessage: 'la drag cols to aggregate',
       pivotColumnsEmptyMessage: 'la drag here to pivot',
       toolPanelButton: 'la tool panel',
@@ -460,7 +455,7 @@ export class AppComponent implements OnInit {
       noRowsToShow: 'la no rows',
 
       // enterprise menu
-      pinColumn: 'laPin Column',
+      pinColumn: 'Pin Column',
       valueAggregation: 'laValue Agg',
       autosizeThiscolumn: 'laAutosize Diz',
       autosizeAllColumns: 'laAutsoie em All',
@@ -511,16 +506,16 @@ export class AppComponent implements OnInit {
       noPin: 'laDontPin <>',
 
       // enterprise menu aggregation and status bar
-      sum: 'laSum',
-      min: 'laMin',
-      max: 'laMax',
-      none: 'laNone',
-      count: 'laCount',
-      average: 'laAverage',
-      filteredRows: 'laFiltered',
-      selectedRows: 'laSelected',
-      totalRows: 'laTotal Rows',
-      totalAndFilteredRows: 'laRows',
+      sum: 'sum',
+      min: 'min',
+      max: 'max',
+      none: 'none',
+      count: 'count',
+      average: 'average',
+      filteredRows: 'Filtered',
+      selectedRows: 'Selected',
+      totalRows: 'Total Rows',
+      totalAndFilteredRows: 'Rows',
 
       // standard menu
       copy: 'laCopy',
