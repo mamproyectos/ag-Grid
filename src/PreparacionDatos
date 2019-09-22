@@ -1,37 +1,71 @@
 Renombrar Excel publicado terminando en OCM.
-Eliminar fila de cabecera.
+Eliminar 2ª fila de cabecera, la que asigna letras a las columnas (a), (b) c=a+b ............
 Eliminar fila totales.
-Añadir columna "Capítulo".
-Extraer primer caracter de "Economico" en esta columna.
-Cambiar a tipo numero.
+Añadir columna "Capitulo". (no usar acento)
+Extraer primer caracter de "Economico" en esta columna. =IZQUIERDA(D2;1)
+Cambiar a tipo numero, 0 decimales, sin separador de miles, las columnas:
+    Org.
+    Pro.
+    Eco.
+    Capitulo.
+Cambiar nombres que contengan un . de lo contrario no se muestran los valores en ag-grid.
+    Saldo de Gastos Compromet. => Saldo de Gastos Comprometidos
+    Facturas consumen disp. Pend. Contabilizar => Facturas consumen disp Pend Contabilizar
+    Saldo de Acuerd. Créd. para No Disponibil. => Saldo de Acuerdo Créditos para No Disponibilidad
+    Saldo de Créditos Retenidos para Trans. => Saldo de Créditos Retenidos para Trans
+    Saldo de Créditos disp. a nivel de Vinculación => Saldo de Créditos disp a nivel de Vinculación
 Grabar.
 
 Abrir Tableau
 Crear nuevo libro con el Excel renombrado anteriormente.
 Grabarlo con el mismo nombre.
 
-
 Preparar consulta en Tableau para unir el Excel del Ayuntamiento con las tablas.
-   Capitulos.
-   Programas.
-   Economicos.
+Camabiar en la cabecera de Tableau de tipo ABC a numero entero las 4 columnas anteriores.
+C:\Users\pc\Google Drive\Ayuntamiento\Presupuestos\Tablas
+Cada una esta nombrada como Tabla Programas 2019 para poder ir recogiendo los posibles cambios.
+Al añadir tablas se situa a la derecha, tratandose de unirse a una tabla accesoria en lugar de a la consulta.
+Solución:
+    Duplicar la tabla que se ha situado a la derecha, se creara otra en el lugar correcto.
+    Borrar la tabla derecha.
+    Restablecer nombre de la tabla. Sigue conservando el nombre anterior entre parentesis.
+
+
+Unión interior.
+   Organicos. Org. => Cor Org
+   Programas. Pro. => Cod Pro
+   Capitulos. Capitulo => Cod Cap
+   Economicos. Eco. => CodEco
 
 Estando en la pestaña Fuente de datos:
      En el menu principal:
         Datos.
         Exportar datos a CSV...
+        Guradar como 20190902eje
 
 Tambien exporta los campos calculados.
 Al exportar de Tableau a CSV hay cantidades que lo hace con decimales y otras no.
-En el CSV generado revisar todas las columnas.
+En el CSV generado revisar todas las columnas numericas.
     Las pongo como numero, decimales=0, sin separador de miles.
+    Los porcentajes = porcentaje, dos decimales.
 
-Borrar los campos repetidos, org, eco.... y se dejan los enlazados de las tablas.
+Borrar los campos repetidos,
+    Capitulo
+    Dos columnas F3 que no seporqué las crea.
+    Eco.
+    Org.
+    Pro.
+ se dejan los enlazados de las tablas.
+
 
 https://www.csvjson.com/csv2json
+Options: Parse numbers y array.
+Download.
+Si esta abierto VS Code lo abre en el..
 Lo genera con el nombre csvjson.json
+Guardar como desde VS Code.
 Le cambio el nombre.
-Lo hago público en Digital Ocean.
+Lo hago público en Digital Ocean. https://cloud.digitalocean.com/login   Sign with Google. Spaces
 Copia la URL.
 La pongo en el codigo.
 

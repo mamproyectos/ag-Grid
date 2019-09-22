@@ -191,8 +191,8 @@ export class AppComponent implements OnInit {
           {
             headerName: 'Comprometidos,,',
             headerComponentFramework: HeaderComponent,
-            field: 'Saldo de Gastos Compromet.',
-            width: this.HeaderNumericWidth,
+            field: 'Saldo de Gastos Comprometidos',
+            width: this.HeaderNumericWidth + 5, // + espacio para que se alinee arriba.
             filter: false,
             columnGroupShow: 'open',
             aggFunc: 'sum',
@@ -213,7 +213,7 @@ export class AppComponent implements OnInit {
           {
             headerName: 'Facturas, consumen disp., Pend. Contabilizar',
             headerComponentFramework: HeaderComponent,
-            field: 'Facturas consumen disp. Pend. Contabilizar',
+            field: 'Facturas consumen disp Pend Contabilizar',
             width: this.HeaderNumericWidth,
             filter: false,
             columnGroupShow: 'open',
@@ -300,7 +300,7 @@ export class AppComponent implements OnInit {
           {
             headerName: 'Acuerdo no,disponibilidad,',
             headerComponentFramework: HeaderComponent,
-            field: 'Saldo de Acuerd. Créd. para No Disponibil.',
+            field: 'Saldo de Acuerdo Créditos para No Disponibilidad',
             width: this.HeaderNumericWidth,
             filter: false,
             columnGroupShow: 'open',
@@ -311,7 +311,7 @@ export class AppComponent implements OnInit {
           {
             headerName: 'Retenidos,transferencias,',
             headerComponentFramework: HeaderComponent,
-            field: 'Saldo de Créditos Retenidos para Trans.',
+            field: 'Saldo de Créditos Retenidos para Trans',
             width: this.HeaderNumericWidth,
             filter: false,
             columnGroupShow: 'open',
@@ -344,7 +344,7 @@ export class AppComponent implements OnInit {
           {
             headerName: 'Disponibles,a nivel,vinculación',
             headerComponentFramework: HeaderComponent,
-            field: 'Saldo de Créditos disp. a nivel de Vinculación',
+            field: 'Saldo de Créditos disp a nivel de Vinculación',
             width: this.HeaderNumericWidth,
             filter: false,
             columnGroupShow: 'open',
@@ -396,14 +396,14 @@ export class AppComponent implements OnInit {
 
     this.localeText = {
       // for filter panel
-      page: 'Page',
-      more: 'More',
-      to: 'To',
-      of: 'Of',
-      next: 'Next',
-      last: 'Last',
-      first: 'First',
-      previous: 'Previous',
+      page: 'Pagina',
+      more: 'Más',
+      to: 'A',
+      of: 'De',
+      next: 'Siguiente',
+      last: 'Ultimo',
+      first: 'Primero',
+      previous: 'Anterior',
       loadingOoo: 'Cargando...',
 
       // for set filter
@@ -413,29 +413,29 @@ export class AppComponent implements OnInit {
 
       // for number filter and text filter
       filterOoo: 'Filtrar...',
-      applyFilter: 'ApplyFilter...',
-      equals: 'Equals',
-      notEquals: 'NotEqual',
+      applyFilter: 'Aplicar filtro....',
+      equals: 'Igual',
+      notEquals: 'Diferente',
 
       // for number filter
-      lessThan: 'LessThan',
-      greaterThan: 'GreaterThan',
-      lessThanOrEqual: 'LessThanOrEqual',
-      greaterThanOrEqual: 'GreaterThanOrEqual',
-      inRange: 'InRange',
+      lessThan: 'Menor que',
+      greaterThan: 'Mayor qu',
+      lessThanOrEqual: 'Menor o igual',
+      greaterThanOrEqual: 'Igual o mayor',
+      inRange: 'En rango',
 
       // for text filter
-      contains: 'Contains',
-      notContains: 'NotContains',
-      startsWith: 'Starts with',
-      endsWith: 'Ends with',
+      contains: 'Contiene',
+      notContains: 'No contiene',
+      startsWith: 'Comienza con',
+      endsWith: 'Termina con',
 
       // filter conditions
       andCondition: 'AND',
       orCondition: 'OR',
 
       // the header of the default group column
-      group: 'Group',
+      group: 'Grupo',
 
       // tool panel
       columns: 'Columnas',
@@ -452,12 +452,12 @@ export class AppComponent implements OnInit {
       toolPanelButton: 'tool panel',
 
       // other
-      noRowsToShow: 'no rows',
+      noRowsToShow: 'Sin filas',
 
       // enterprise menu
-      pinColumn: 'Pin Column',
-      valueAggregation: 'laValue Agg',
-      autosizeThiscolumn: 'Autosize Diz',
+      pinColumn: 'Inmovilizar columna',
+      valueAggregation: 'Value Agg',
+      autosizeThiscolumn: 'Auto tamaño columna',
       autosizeAllColumns: 'Auto tamaño todos',
       groupBy: 'Group by',
       ungroupBy: 'UnGroup by',
@@ -466,12 +466,12 @@ export class AppComponent implements OnInit {
       collapseAll: 'Colapsar todo',
       toolPanel: 'Tool Panel',
       export: 'Exportar',
-      csvExport: 'CSV Export',
-      excelExport: 'Excel Export (.xlsx)',
-      excelXmlExport: 'Excel Export (.xml)',
+      csvExport: 'Exportar a CSV',
+      excelExport: 'Exportar a Excel (.xlsx)',
+      excelXmlExport: 'Exportar a Excel (.xml)',
 
       // enterprise menu (charts)
-      pivotChartAndPivotMode: 'laPivot Chart & Pivot Mode',
+      pivotChartAndPivotMode: 'Pivot Chart & Pivot Mode',
       pivotChart: 'Pivot Chart',
       chartRange: 'Chart Range',
 
@@ -519,7 +519,7 @@ export class AppComponent implements OnInit {
 
       // standard menu
       copy: 'Copy',
-      copyWithHeaders: 'Copy Wit hHeaders',
+      copyWithHeaders: 'Copy Width hHeaders',
       ctrlC: 'ctrl n C',
       paste: 'Paste',
       ctrlV: 'ctrl n V',
@@ -604,7 +604,8 @@ export class AppComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
+    // this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
+    this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190902eje.json');
     params.api.setSortModel(this.defaultSortModel);
   }
 }
