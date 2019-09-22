@@ -395,6 +395,7 @@ export class AppComponent implements OnInit {
       }
     ];
 
+    // this.localeText = '../assets/localeText-ESP-es.json';
     this.localeText = {
       // for filter panel
       page: 'Pagina',
@@ -458,8 +459,8 @@ export class AppComponent implements OnInit {
       // enterprise menu
       pinColumn: 'Inmovilizar columna',
       valueAggregation: 'Value Agg',
-      autosizeThiscolumn: 'Auto tamaño columna',
-      autosizeAllColumns: 'Auto tamaño todos',
+      autosizeThiscolumn: 'Autotamaño columna',
+      autosizeAllColumns: 'Autotamaño todas columnas',
       groupBy: 'Group by',
       ungroupBy: 'UnGroup by',
       resetColumns: 'Restaurar columnas',
