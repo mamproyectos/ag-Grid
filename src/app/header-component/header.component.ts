@@ -17,9 +17,9 @@ export class HeaderComponent implements IHeaderAngularComp {
     private elementRef: ElementRef;
 
     private myHeaderNameArray: any;
-    private myHeaderNameLinea1: string;
-    private myHeaderNameLinea2: string;
-    private myHeaderNameLinea3: string;
+    public myHeaderNameLinea1: string;
+    public myHeaderNameLinea2: string;
+    public myHeaderNameLinea3: string;
 
     constructor(elementRef: ElementRef) {
         this.elementRef = elementRef;

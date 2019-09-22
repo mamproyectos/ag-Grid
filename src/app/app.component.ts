@@ -18,19 +18,20 @@ export class AppComponent implements OnInit {
   private gridApi;
   private gridColumnApi;
 
-  private columnDefs;
-  private defaultColDef;
-  private gridOptions: GridOptions;
-  private localeText;
-  private sideBar;
-  private rowData: any;
-  private defaultSortModel;
-  private rowGroupPanelShow;
-  private statusBar;
-  private paginationPageSize;
+  public columnDefs;
+  public defaultColDef;
+  public gridOptions: GridOptions;
+  public localeText;
+  public sideBar;
+  public rowData: any;
+  public defaultSortModel;
+  public rowGroupPanelShow;
+  public statusBar;
+  public paginationPageSize;
+  public autoGroupColumnDef;
 
-  private groupHeaderHeight = 25;
-  private headerHeight = 75;
+  public groupHeaderHeight = 25;
+  public headerHeight = 75;
   private HeaderNumericWidth = 92;
 
   constructor(private http: HttpClient) {
