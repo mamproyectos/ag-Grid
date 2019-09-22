@@ -462,7 +462,7 @@ export class AppComponent implements OnInit {
       autosizeAllColumns: 'Auto tamaño todos',
       groupBy: 'Group by',
       ungroupBy: 'UnGroup by',
-      resetColumns: 'Reset Those Cols',
+      resetColumns: 'Restaurar columnas',
       expandAll: 'Expandir todo',
       collapseAll: 'Colapsar todo',
       toolPanel: 'Tool Panel',
@@ -502,9 +502,9 @@ export class AppComponent implements OnInit {
       normalizedArea: '100% Stacked',
 
       // enterprise menu pinning
-      pinLeft: 'Pin <<',
-      pinRight: 'Pin >>',
-      noPin: 'DontPin <>',
+      pinLeft: 'Inmovilizar <<',
+      pinRight: 'Inmovilizar >>',
+      noPin: 'Movilizar <>',
 
       // enterprise menu aggregation and status bar
       sum: 'sum',
