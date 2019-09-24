@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
   public groupHeaderHeight = 25;
   public headerHeight = 75;
   private HeaderNumericWidth = 100;
+  public isExpanded = false;
 
   constructor(private http: HttpClient) {
     this.columnDefs = [
@@ -416,10 +417,12 @@ export class AppComponent implements OnInit {
 
   expandAll() {
     this.gridApi.expandAll();
+    this.isExpanded = true;
   }
 
   collapseAll() {
     this.gridApi.collapseAll();
+    this.isExpanded = false;
   }
 
 }

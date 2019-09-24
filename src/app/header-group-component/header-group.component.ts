@@ -21,7 +21,6 @@ export class HeaderGroupComponent implements IHeaderGroupAngularComp {
         // console.log(this.gridColumnApi);
     }
 
-
     // onGridReady(params) {
     //   this.gridApi = params.api;
     //   this.gridColumnApi = params.columnApi;
@@ -33,34 +32,13 @@ export class HeaderGroupComponent implements IHeaderGroupAngularComp {
     }
 
     expandOrCollapse() {
+       console.log(this.params);
        this.params.setExpanded(!this.expanded);
     }
 
-    // expandOrCollapseAll() {
-    //   console.log('Expandir o contraer' + this.params.setExpanded);
-    //   this.params.setExpanded(!this.params.columnGroup);
-    // }
-
-    // expandOrCollapseAll(expand) {
-    //   console.log('Expandir o contraer todos');
-    //   const columnApi = this.params.columnApi;
-    //   // const columnApi = this.params.gridColumnApi;
-    //   const groupNames = ['Iniciales,,', 'Modificación,,'];
-    //   groupNames.forEach(function(groupId) {
-    //     columnApi.setColumnGroupOpened(groupId, expand);
-    //   });
-    // }
-
-    // https://www.ag-grid.com/javascript-grid-grouping-headers/
-    expandOrCollapseAll(expand: boolean) {
-      const columnApi = this.gridColumnApi;
-      console.log(this.gridColumnApi);
-      const groupNames = ['Iniciales,,', 'Modificación,,'];
-      console.log(groupNames);
-      // groupNames.forEach(function(groupNames[i]) {
-      //   columnApi.setColumnOpened(groupNames, expand);
-      // });
-      columnApi.setColumnOpened(groupNames[1], expand);
+      // https://www.ag-grid.com/javascript-grid-grouping-headers/
+    expandOrCollapseAll() {
+      this.params.setExpanded(!this.expanded);
     }
 
     onExpandChanged() {

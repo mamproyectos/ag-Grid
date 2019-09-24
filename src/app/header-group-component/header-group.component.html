@@ -1,9 +1,10 @@
 <div>
     <div class="customHeaderLabel"> {{ this.params.displayName }}</div>
 
-    <div (click)="expandOrCollapseAll(true)"
+    <div (click)="expandOrCollapseAll()"
         class="{{'customExpandButton'}}">
-        <i class="fa fa-plus-square" ></i>
+        <i *ngIf = "!expanded" class="fa fa-plus-square" ></i>
+        <i *ngIf = "expanded" class="fa fa-minus-square" ></i>
     </div>
 
     <div (click)="expandOrCollapse()"
