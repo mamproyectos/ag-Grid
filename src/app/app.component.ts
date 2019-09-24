@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   public groupHeaderHeight = 25;
   public headerHeight = 75;
-  private HeaderNumericWidth = 92;
+  private HeaderNumericWidth = 100;
 
   constructor(private http: HttpClient) {
     this.columnDefs = [

@@ -1,7 +1,14 @@
 <div>
     <div class="customHeaderLabel"> {{ this.params.displayName }}</div>
+
+    <div (click)="expandOrCollapseAll(true)"
+        class="{{'customExpandButton'}}">
+        <i class="fa fa-plus-square" ></i>
+    </div>
+
     <div (click)="expandOrCollapse()"
         class="{{'customExpandButton' + (this.expanded ?  ' expanded': ' collapsed')}}">
         <i class="fa fa-arrow-right" ></i>
-    </div>
+          </div>
+
 </div>
