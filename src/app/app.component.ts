@@ -407,11 +407,21 @@ export class AppComponent implements OnInit {
 
   onGridReady(params) {
     this.gridApi = params.api;
+    // console.log( this.gridApi );
     this.gridColumnApi = params.columnApi;
     // this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190807eje.json');
     this.rowData = this.http.get('https://mamjerez.fra1.digitaloceanspaces.com/20190902eje.json');
     params.api.setSortModel(this.defaultSortModel);
   }
+
+  expandAll() {
+    this.gridApi.expandAll();
+  }
+
+  collapseAll() {
+    this.gridApi.collapseAll();
+  }
+
 }
 
 function CellRendererOCM(params: any) {
@@ -435,6 +445,8 @@ function CellRendererOCM(params: any) {
     return '';
   }
 }
+
+
 
 
 // {

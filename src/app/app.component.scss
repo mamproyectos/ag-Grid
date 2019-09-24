@@ -10,6 +10,24 @@
   background-color: aqua
 }
 
+.btnExpand{
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: aliceblue;
+  background-color: green
+}
+
+.btnCollapse{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: aliceblue;
+  background-color: rgb(201, 72, 72)
+}
+
 .ag-cell-label-container{
   /*Necessary to allow for text to grow vertically*/
   height: 100%;

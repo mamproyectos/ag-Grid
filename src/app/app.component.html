@@ -1,6 +1,9 @@
 <div class="centrarSection" role="main">
   <app-header-ocm></app-header-ocm>
 
+  <button type="button" class="btn btnExpand" (click)="expandAll()">Expandir todo</button>
+  <button type="button" class="btn btnCollapse" (click)="collapseAll()">Colapsar todo</button>
+
   <ag-grid-angular
     #agGrid
     style="width: 100%; height: 90vh; padding-right: 20px; margin-left: 10px"
