@@ -16,6 +16,20 @@ body{
   // grid-template-columns: 1fr;
 }
 
+
+// Sobreescribe lo definido en  /node_modules\ag-grid-community\src\styles\ag-grid.scss :365
+.ag-header-cell-label .ag-header-cell-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: green;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
 // Cambia la altura del combo de busqueda.
 #richList{
   height: 800px !Important;
